@@ -8,7 +8,7 @@ const Typewriter = dynamic(() => import("typewriter-effect"), { ssr: false });
 
 const Hero = () => {
   return (
-    <div className="relative h-screen w-full flex flex-col justify-center items-center px-6 text-white">
+    <div className="relative min-h-screen w-full flex flex-col justify-center items-center px-6 text-white">
       <div className="text-5xl lg:text-9xl text-center flex flex-col gap-4 lg:gap-8 z-10">
         <Typewriter
           options={{
