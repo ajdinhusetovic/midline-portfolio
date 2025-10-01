@@ -7,6 +7,14 @@ export default function Navbar() {
 
   const navItems = ["Home", "Services", "Portfolio", "About", "Contact"];
 
+  // Smooth scroll function
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <nav className="w-full fixed top-4 left-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,22 +27,22 @@ export default function Navbar() {
           {/* Center Nav - Desktop */}
           <div
             className="hidden lg:flex space-x-8 px-6 py-3 rounded-4xl 
-                          bg-white/8 backdrop-blur-md border border-white/2"
+                        bg-white/8 backdrop-blur-md border border-white/2"
           >
             {navItems.map((item) => (
-              <a
+              <button
                 key={item}
-                href={`#${item.toLowerCase()}`}
+                onClick={() => scrollToSection(item.toLowerCase())}
                 className="text-white hover:text-blue-400 transition text-lg font-semibold"
               >
                 {item}
-              </a>
+              </button>
             ))}
           </div>
 
           {/* Right Button */}
           <div className="hidden lg:block">
-            <button className="px-6 py-3 rounded-4xl bg-white  text-black font-semibold transition text-lg ">
+            <button className="px-6 py-3 rounded-4xl bg-white text-black font-semibold transition text-lg">
               + Become a Client
             </button>
           </div>
@@ -87,14 +95,16 @@ export default function Navbar() {
       >
         <div className="px-4 pt-4 pb-6 space-y-4 flex flex-col items-center">
           {navItems.map((item) => (
-            <a
+            <button
               key={item}
-              href={`#${item.toLowerCase()}`}
+              onClick={() => {
+                scrollToSection(item.toLowerCase());
+                setIsOpen(false); // close mobile menu
+              }}
               className="text-white text-lg hover:text-blue-400 transition"
-              onClick={() => setIsOpen(false)}
             >
               {item}
-            </a>
+            </button>
           ))}
 
           <button className="mt-4 px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition">
