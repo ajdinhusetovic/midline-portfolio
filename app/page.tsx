@@ -3,13 +3,7 @@ import Services from "@/components/Services";
 
 export default function Home() {
   return (
-    <main
-      className="h-screen w-full bg-cover bg-center"
-      style={{
-        backgroundImage:
-          "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/background.jpg')",
-      }}
-    >
+    <main className="flex flex-col">
       <Hero />
       <Services />
     </main>
