@@ -3,7 +3,7 @@ import Services from "@/components/Services";
 
 export default function Home() {
   return (
-    <main className="flex flex-col">
+    <main className="">
       <Hero />
       <Services />
     </main>

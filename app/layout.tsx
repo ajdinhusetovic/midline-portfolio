@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen w-full bg-cover bg-center`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased w-full bg-cover bg-center`}
         style={{
           backgroundImage:
             "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/background.jpg')",
