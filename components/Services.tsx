@@ -26,7 +26,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="relative h-screen w-full px-6 flex flex-col justify-center items-center bg-transparent mt-22">
+    <section className="relative h-screen w-full px-6 flex flex-col justify-center items-center bg-transparent mt-22 max-w-7xl mx-auto">
       <div className="text-center mb-12">
         <h2 className="text-4xl lg:text-9xl font-bold text-white mb-4">
           Our Services
