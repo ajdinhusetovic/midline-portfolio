@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navItems = ["Home", "Services", "Portfolio", "About", "Contact"];
+  const navItems = ["Home", "Services", "About", "Contact"];
 
   // Smooth scroll function
   const scrollToSection = (id: string) => {
@@ -30,21 +31,39 @@ export default function Navbar() {
                         bg-white/8 backdrop-blur-md border border-white/2"
           >
             {navItems.map((item) => (
-              <button
+              <motion.button
+                whileHover={{
+                  scale: 1.2,
+                  transition: { duration: 0.1 },
+                }}
+                whileTap={{
+                  scale: 0.9,
+                  transition: { duration: 0.1 },
+                }}
                 key={item}
                 onClick={() => scrollToSection(item.toLowerCase())}
-                className="text-white hover:text-blue-400 transition text-lg font-semibold"
+                className="text-white cursor-pointer hover:text-blue-400 transition text-lg font-semibold"
               >
                 {item}
-              </button>
+              </motion.button>
             ))}
           </div>
 
           {/* Right Button */}
           <div className="hidden lg:block">
-            <button className="px-6 py-3 rounded-4xl bg-white text-black font-semibold transition text-lg">
+            <motion.button
+              whileHover={{
+                scale: 1.1,
+                transition: { duration: 0.1 },
+              }}
+              whileTap={{
+                scale: 0.9,
+                transition: { duration: 0.1 },
+              }}
+              className="px-6 cursor-pointer py-3 hover:bg-blue-400 rounded-4xl bg-white text-black font-semibold transition text-lg"
+            >
               + Become a Client
-            </button>
+            </motion.button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -95,7 +114,10 @@ export default function Navbar() {
       >
         <div className="px-4 pt-4 pb-6 space-y-4 flex flex-col items-center">
           {navItems.map((item) => (
-            <button
+            <motion.button
+              whileHover={{
+                scale: 1.2,
+              }}
               key={item}
               onClick={() => {
                 scrollToSection(item.toLowerCase());
@@ -104,10 +126,10 @@ export default function Navbar() {
               className="text-white text-lg hover:text-blue-400 transition"
             >
               {item}
-            </button>
+            </motion.button>
           ))}
 
-          <button className="mt-4 px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition">
+          <button className="mt-4 cursor-pointer px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition">
             + Become a Client
           </button>
         </div>
