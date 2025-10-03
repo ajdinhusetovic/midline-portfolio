@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     }
 
     return Response.json(data);
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.log("Catch error:", err);
     return Response.json({ error: String(err) }, { status: 500 });
   }

@@ -14,7 +14,11 @@ export default function Navbar() {
     message: "",
   });
 
-  const navItems = ["Home", "Services", "About", "Contact"];
+  const navItems = [
+    { label: "Home", id: "home" },
+    { label: "Services", id: "services" },
+    { label: "About Us", id: "about-us" },
+  ];
 
   // Smooth scroll function
   const scrollToSection = (id: string) => {
@@ -67,11 +71,11 @@ export default function Navbar() {
                 <motion.button
                   whileHover={{ scale: 1.2, transition: { duration: 0.1 } }}
                   whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
+                  key={item.label}
+                  onClick={() => scrollToSection(item.id.toLowerCase())}
                   className="text-white cursor-pointer hover:text-blue-400 transition text-lg font-semibold"
                 >
-                  {item}
+                  {item.label}
                 </motion.button>
               ))}
             </div>
@@ -129,31 +133,43 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Dropdown */}
+        {/* Mobile Dropdown */}
         <div
-          className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-          } bg-black/70 backdrop-blur-md`}
+          className={`lg:hidden fixed top-0 left-0 w-full h-screen bg-black/70 backdrop-blur-md z-40 flex flex-col items-center justify-center transition-all duration-300 ease-in-out ${
+            isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
         >
-          <div className="px-4 pt-4 pb-6 space-y-4 flex flex-col items-center">
-            {navItems.map((item) => (
-              <motion.button
-                whileHover={{ scale: 1.2 }}
-                key={item}
-                onClick={() => {
-                  scrollToSection(item.toLowerCase());
-                  setIsOpen(false);
-                }}
-                className="text-white text-lg hover:text-blue-400 transition"
-              >
-                {item}
-              </motion.button>
-            ))}
+          <div className="flex flex-col items-center justify-start w-full h-full">
+            {/* X button */}
             <button
-              onClick={() => setIsFormOpen(true)}
-              className="mt-4 cursor-pointer px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition"
+              onClick={() => setIsOpen(false)}
+              className="self-end text-4xl text-white font-bold p-6"
             >
-              + Become a Client
+              ×
             </button>
+
+            {/* Menu Items */}
+            <div className="flex flex-col items-center justify-center h-full space-y-6">
+              {navItems.map((item) => (
+                <motion.button
+                  whileHover={{ scale: 1.2 }}
+                  key={item.label}
+                  onClick={() => {
+                    scrollToSection(item.id.toLowerCase());
+                    setIsOpen(false);
+                  }}
+                  className="text-white text-2xl hover:text-blue-400 transition"
+                >
+                  {item.label}
+                </motion.button>
+              ))}
+              <button
+                onClick={() => setIsFormOpen(true)}
+                className="mt-4 cursor-pointer px-6 py-3 rounded-4xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
+              >
+                + Become a Client
+              </button>
+            </div>
           </div>
         </div>
       </nav>
@@ -166,7 +182,7 @@ export default function Navbar() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "tween", duration: 0.4 }}
-            className="fixed top-0 right-0 w-full h-screen bg-white/8 backdrop-blur-lg z-[100] flex flex-col p-6"
+            className="fixed top-0 right-0 w-full h-screen bg-black/10 backdrop-blur-md z-[100] flex flex-col p-6"
           >
             <button
               onClick={() => setIsFormOpen(false)}
@@ -180,7 +196,7 @@ export default function Navbar() {
             </h2>
             <form
               onSubmit={handleSubmit}
-              className="flex mt-6 flex-col gap-6 max-w-2xl mx-auto w-full text-white text-3xl"
+              className="flex mt-6 flex-col gap-6 max-w-2xl mx-auto w-full text-white text-lg lg:text-3xl"
             >
               <input
                 type="text"
@@ -189,7 +205,7 @@ export default function Navbar() {
                 onChange={handleChange}
                 placeholder="Your name"
                 required
-                className="border-2 h-24 p-4 rounded-4xl font-bold"
+                className="border-2 lg:h-24 p-4 rounded-4xl font-bold"
               />
               <input
                 type="email"
@@ -198,7 +214,7 @@ export default function Navbar() {
                 onChange={handleChange}
                 placeholder="Your email adress"
                 required
-                className="border-2 h-24 p-4 rounded-4xl font-bold"
+                className="border-2 lg:h-24 p-4 rounded-4xl font-bold"
               />
               <textarea
                 name="message"
@@ -206,11 +222,11 @@ export default function Navbar() {
                 onChange={handleChange}
                 placeholder="How can we help you?"
                 required
-                className="border-2 resize-none h-80 p-4 rounded-4xl font-bold"
+                className="border-2 resize-none h-40 lg:h-80 p-4 rounded-4xl font-bold"
               />
               <button
                 type="submit"
-                className="w-[70%] mx-auto px-6 py-6 rounded-4xl text-3xl bg-blue-400 cursor-pointer text-white font-semibold hover:bg-blue-700 transition"
+                className="lg:w-[70%] mx-auto px-6 py-3 lg:py-6 rounded-4xl text-lg lg:text-3xl bg-blue-400 cursor-pointer text-white font-semibold hover:bg-blue-700 transition"
               >
                 Get in Touch
               </button>

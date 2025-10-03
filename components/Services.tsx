@@ -31,7 +31,7 @@ const Services = () => {
       className="relative min-h-screen px-6 flex flex-col justify-center items-center bg-transparent mt-38 lg:mt-0 max-w-7xl mx-auto"
     >
       <div className="text-center mb-12">
-        <h2 className="text-4xl lg:text-9xl font-bold text-white mb-4">
+        <h2 className="text-4xl md:text-7xl lg:text-9xl font-bold text-white mb-4">
           Our Services
         </h2>
         <p className="text-2xl lg:text-3xl text-gray-300 font-semibold">
@@ -39,7 +39,7 @@ const Services = () => {
         </p>
       </div>
 
-      <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-3">
+      <div className="grid gap-8 sm:w-[50%] md:w-[50%] xl:w-full md:grid-cols-1 xl:grid-cols-3">
         {services.map((service) => (
           <div
             key={service.title}
@@ -53,6 +53,11 @@ const Services = () => {
             </p>
           </div>
         ))}
+      </div>
+      <div className="w-full flex items-center justify-center">
+        <button className="text-white mt-12 font-bold bg-blue-400 p-4 rounded-4xl text-lg w-[40%] lg:w-[30%] m-auto">
+          Start Your Project
+        </button>
       </div>
     </section>
   );
