@@ -55,7 +55,7 @@ const Services = () => {
         ))}
       </div>
       <div className="w-full flex items-center justify-center">
-        <button className="text-white mt-12 font-bold bg-blue-400 p-4 rounded-4xl text-lg w-[40%] lg:w-[30%] m-auto">
+        <button className="text-white mt-12 font-bold bg-blue-400 p-4 rounded-4xl text-lg md:w-[30%] lg:w-[30%] m-auto">
           Start Your Project
         </button>
       </div>
