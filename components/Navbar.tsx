@@ -135,7 +135,7 @@ export default function Navbar() {
         {/* Mobile Dropdown */}
         {/* Mobile Dropdown */}
         <div
-          className={`lg:hidden fixed top-0 left-0 w-full h-screen bg-black/70 backdrop-blur-md z-40 flex flex-col items-center justify-center transition-all duration-300 ease-in-out ${
+          className={`lg:hidden fixed top-0 left-0 w-full h-screen bg-black/70 backdrop-blur-md z-40 flex flex-col items-center justify-center overflow-y-auto transition-all duration-300 ease-in-out ${
             isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
           }`}
         >
@@ -191,46 +191,48 @@ export default function Navbar() {
               ×
             </button>
 
-            <h2 className="text-4xl lg:text-9xl text-white text-center font-bold mb-6">
-              Contact Us
-            </h2>
-            <form
-              onSubmit={handleSubmit}
-              className="flex mt-6 flex-col gap-6 max-w-2xl mx-auto w-full text-white text-lg lg:text-3xl"
-            >
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Your name"
-                required
-                className="border-2 lg:h-24 p-4 rounded-4xl font-bold"
-              />
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Your email adress"
-                required
-                className="border-2 lg:h-24 p-4 rounded-4xl font-bold"
-              />
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="How can we help you?"
-                required
-                className="border-2 resize-none h-40 lg:h-80 p-4 rounded-4xl font-bold"
-              />
-              <button
-                type="submit"
-                className="lg:w-[70%] mx-auto px-6 py-3 lg:py-6 rounded-4xl text-lg lg:text-3xl bg-blue-400 cursor-pointer text-white font-semibold hover:bg-blue-700 transition"
+            <div className="flex flex-col flex-1 overflow-y-auto mt-4">
+              <h2 className="text-4xl lg:text-9xl text-white text-center font-bold mb-6">
+                Contact Us
+              </h2>
+              <form
+                onSubmit={handleSubmit}
+                className="flex flex-col gap-6 max-w-2xl mx-auto w-full text-white text-lg lg:text-3xl pb-12"
               >
-                Get in Touch
-              </button>
-            </form>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Your name"
+                  required
+                  className="border-2 lg:h-24 p-4 rounded-4xl font-bold"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Your email adress"
+                  required
+                  className="border-2 lg:h-24 p-4 rounded-4xl font-bold"
+                />
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="How can we help you?"
+                  required
+                  className="border-2 resize-none h-40 lg:h-80 p-4 rounded-4xl font-bold"
+                />
+                <button
+                  type="submit"
+                  className="lg:w-[70%] mx-auto px-6 py-3 lg:py-6 rounded-4xl text-lg lg:text-3xl bg-blue-400 cursor-pointer text-white font-semibold hover:bg-blue-700 transition"
+                >
+                  Get in Touch
+                </button>
+              </form>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
