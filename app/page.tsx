@@ -4,7 +4,7 @@ import Services from "@/components/Services";
 
 export default function Home() {
   return (
-    <main className="">
+    <main className="mb-20">
       <Hero />
       <Services />
       <AboutUs />

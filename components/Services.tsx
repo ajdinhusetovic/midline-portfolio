@@ -1,7 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Monitor, WandSparkles, Smartphone } from "@deemlol/next-icons";
+import ContactForm from "./ContactForm";
 
 const services = [
   {
@@ -25,6 +26,9 @@ const services = [
 ];
 
 const Services = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
   return (
     <section
       id="services"
@@ -45,20 +49,24 @@ const Services = () => {
             key={service.title}
             className="bg-white/5 backdrop-blur-sm rounded-2xl p-12 text-center shadow-lg hover:scale-105 transition-transform duration-300"
           >
-            <h3 className="text-xl lg:text-2xl font-bold text-blue-500 mb-3 flex flex-row items-center justify-center gap-2 lg:gap-4">
+            <h3 className="text-lg lg:text-2xl font-bold text-blue-500 mb-3 flex flex-row items-center justify-center gap-2 lg:gap-4">
               <span>{service.icon}</span> {service.title}
             </h3>
-            <p className="text-white text-xl font-semibold">
+            <p className="text-white text-md font-semibold">
               {service.description}
             </p>
           </div>
         ))}
       </div>
       <div className="w-full flex items-center justify-center">
-        <button className="text-white mt-12 font-bold bg-blue-400 p-4 rounded-4xl text-lg md:w-[30%] lg:w-[30%] m-auto">
+        <button
+          onClick={() => setIsFormOpen(true)}
+          className="text-white mt-12 font-bold bg-blue-400 p-3 md:p-4 rounded-4xl text-lg md:w-[30%] lg:w-[30%] m-auto"
+        >
           Start Your Project
         </button>
       </div>
+      <ContactForm isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
     </section>
   );
 };
