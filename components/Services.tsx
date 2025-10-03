@@ -26,13 +26,12 @@ const services = [
 ];
 
 const Services = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   return (
     <section
       id="services"
-      className="relative min-h-screen px-6 flex flex-col justify-center items-center bg-transparent mt-38 lg:mt-0 max-w-7xl mx-auto"
+      className="relative min-h-screen px-6 flex flex-col justify-center items-center bg-transparent lg:mt-[-200px] max-w-7xl mx-auto"
     >
       <div className="text-center mb-12">
         <h2 className="text-4xl md:text-7xl lg:text-9xl font-bold text-white mb-4">
