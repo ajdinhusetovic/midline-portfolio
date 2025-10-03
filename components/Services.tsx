@@ -31,7 +31,7 @@ const Services = () => {
   return (
     <section
       id="services"
-      className="relative min-h-screen px-6 flex flex-col justify-center items-center bg-transparent md:mt-10 xl:mt-[-200px] max-w-7xl mx-auto"
+      className="relative min-h-screen px-6 flex flex-col justify-center items-center bg-transparent md:mt-10 xl:mt-[-100px] max-w-7xl mx-auto"
     >
       <div className="text-center mb-12">
         <h2 className="text-4xl md:text-7xl lg:text-9xl font-bold text-white mb-4">
