@@ -32,9 +32,9 @@ export default function RootLayout({
           backgroundImage:
             "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/background.jpg')",
           backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "scroll", // <-- change fixed -> scroll
+          backgroundSize: "cover", // still good, but tweak position
+          backgroundPosition: "right center", // ensure the main part of image stays visible
+          backgroundAttachment: "scroll",
         }}
       >
         <Navbar />
