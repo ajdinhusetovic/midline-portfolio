@@ -7,7 +7,7 @@ const AboutUs = () => {
       id="about-us"
       className="min-h-screen max-w-7xl mt-25 md:mt-40 xl:mt-[-20px] mx-auto text-white flex flex-col items-center justify-center lg:gap-30"
     >
-      <h1 className="text-4xl md:text-7xl lg:text-9xl font-bold text-center">
+      <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold text-center">
         About Us
       </h1>
       <div className="flex flex-col xl:flex-row gap-20 mt-16 lg:mt-0 lg:gap-30">
@@ -20,10 +20,10 @@ const AboutUs = () => {
         />
 
         <div className="flex flex-col gap-y-5 max-w-lg mx-auto px-4">
-          <h2 className="text-2xl lg:text-5xl font-semibold text-center xl:text-left">
+          <h2 className="text-2xl lg:text-4xl font-semibold text-center xl:text-left">
             About MidlineCode
           </h2>
-          <p className="text-lg lg:text-xl text-gray-300 text-center xl:text-left">
+          <p className="text-lg lg:text-lg text-gray-300 text-center xl:text-left">
             We’re a small, passionate web studio dedicated to helping businesses
             thrive online. As a small team, we combine design and development
             expertise to create custom websites, web applications, and

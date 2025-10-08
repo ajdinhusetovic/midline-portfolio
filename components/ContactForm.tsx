@@ -62,45 +62,47 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
           </button>
 
           <div className="flex flex-col flex-1 overflow-y-auto mt-4">
-            <h2 className="text-4xl md:text-6xl lg:text-8xl text-white text-center font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl lg:text-7xl text-white text-center font-bold mb-6">
               Contact Us
             </h2>
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col gap-6 max-w-2xl mx-auto w-full text-white text-lg lg:text-2xl pb-12"
+              className="flex flex-col gap-6 max-w-2xl mx-auto w-full text-white text-lg lg:text-xl pb-12"
             >
               <input
                 type="text"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                placeholder="Your name"
+                placeholder="Your name*"
                 required
-                className="border-2 md:h-18 p-4 rounded-4xl font-bold"
+                className="border-2 md:h-14 p-4 rounded-4xl font-bold"
               />
               <input
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="Your email adress"
+                placeholder="Your email adress*"
                 required
-                className="border-2 md:h-18 p-4 rounded-4xl font-bold"
+                className="border-2 md:h-14 p-4 rounded-4xl font-bold"
               />
               <textarea
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                placeholder="How can we help you?"
+                placeholder="How can we help you?*"
                 required
-                className="border-2 resize-none h-40 lg:h-80 p-4 rounded-4xl font-bold"
+                className="border-2 resize-none h-40 lg:h-60 p-4 rounded-4xl font-bold"
               />
-              <button
+              <motion.button
                 type="submit"
+                whileHover={{ scale: 1.1, transition: { duration: 0.1 } }}
+                whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
                 className="lg:w-[60%] mx-auto px-6 py-3 lg:py-4 rounded-4xl text-lg md:text-2xl bg-blue-400 cursor-pointer text-white font-semibold hover:bg-blue-700 transition"
               >
                 Get in Touch
-              </button>
+              </motion.button>
             </form>
           </div>
         </motion.div>

@@ -12,7 +12,7 @@ const Hero = () => {
       id="home"
       className="relative min-h-screen w-full flex flex-col justify-center items-center px-6 text-white"
     >
-      <div className="text-5xl md:text-7xl lg:text-9xl text-center flex flex-col gap-4 lg:gap-8 z-10">
+      <div className="text-5xl md:text-7xl lg:text-8xl text-center flex flex-col gap-4 lg:gap-8 z-10">
         <Typewriter
           options={{
             strings: ["MidlineCode"],
@@ -20,7 +20,7 @@ const Hero = () => {
             loop: true,
           }}
         />
-        <p className="text-xl md:text-2xl lg:text-3xl text-center">
+        <p className="text-xl md:text-2xl lg:text-2xl text-center">
           Defining how your business is seen online.
         </p>
       </div>
