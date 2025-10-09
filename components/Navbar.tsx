@@ -31,17 +31,33 @@ export default function Navbar() {
             </div>
 
             <div className="hidden lg:flex space-x-8 px-6 py-3 rounded-4xl bg-white/8 backdrop-blur-md border border-white/2">
-              {navItems.map((item) => (
-                <motion.button
-                  whileHover={{ scale: 1.2, transition: { duration: 0.1 } }}
-                  whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
-                  key={item.label}
-                  onClick={() => scrollToSection(item.id.toLowerCase())}
-                  className="text-white cursor-pointer hover:text-blue-400 transition text-lg font-semibold"
-                >
-                  {item.label}
-                </motion.button>
-              ))}
+              {navItems.map((item) =>
+                item.label === "Pricing Guide" ? (
+                  // PDF link
+                  <motion.a
+                    whileHover={{ scale: 1.2, transition: { duration: 0.1 } }}
+                    whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
+                    key={item.label}
+                    href="/brochure.pdf" // PDF in public folder
+                    target="_blank" // opens in new tab
+                    rel="noopener noreferrer"
+                    className="text-white cursor-pointer hover:text-blue-400 transition text-lg font-semibold"
+                  >
+                    {item.label}
+                  </motion.a>
+                ) : (
+                  // regular scroll button
+                  <motion.button
+                    whileHover={{ scale: 1.2, transition: { duration: 0.1 } }}
+                    whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
+                    key={item.label}
+                    onClick={() => scrollToSection(item.id.toLowerCase())}
+                    className="text-white cursor-pointer hover:text-blue-400 transition text-lg font-semibold"
+                  >
+                    {item.label}
+                  </motion.button>
+                )
+              )}
             </div>
 
             <div className="hidden lg:block">
@@ -80,19 +96,33 @@ export default function Navbar() {
               ×
             </button>
             <div className="flex flex-col items-center justify-center h-full space-y-6">
-              {navItems.map((item) => (
-                <motion.button
-                  whileHover={{ scale: 1.2 }}
-                  key={item.label}
-                  onClick={() => {
-                    scrollToSection(item.id.toLowerCase());
-                    setIsOpen(false);
-                  }}
-                  className="text-white text-2xl hover:text-blue-400 transition"
-                >
-                  {item.label}
-                </motion.button>
-              ))}
+              {navItems.map((item) =>
+                item.label === "Pricing Guide" ? (
+                  // PDF link
+                  <motion.a
+                    whileHover={{ scale: 1.2, transition: { duration: 0.1 } }}
+                    whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
+                    key={item.label}
+                    href="/brochure.pdf" // PDF in public folder
+                    target="_blank" // opens in new tab
+                    rel="noopener noreferrer"
+                    className="text-white cursor-pointer hover:text-blue-400 transition text-lg font-semibold"
+                  >
+                    {item.label}
+                  </motion.a>
+                ) : (
+                  // regular scroll button
+                  <motion.button
+                    whileHover={{ scale: 1.2, transition: { duration: 0.1 } }}
+                    whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
+                    key={item.label}
+                    onClick={() => scrollToSection(item.id.toLowerCase())}
+                    className="text-white cursor-pointer hover:text-blue-400 transition text-lg font-semibold"
+                  >
+                    {item.label}
+                  </motion.button>
+                )
+              )}
               <button
                 onClick={() => setIsFormOpen(true)}
                 className="mt-4 cursor-pointer px-6 py-3 rounded-4xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"

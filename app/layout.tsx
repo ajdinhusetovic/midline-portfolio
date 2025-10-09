@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Lato, Work_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { Toaster } from "@/components/ui/sonner";
@@ -14,6 +14,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const lato = Lato({ subsets: ["latin"], weight: ["400", "700"] });
+const workSans = Work_Sans({ subsets: ["latin"], weight: ["400", "700"] });
+
 export const metadata: Metadata = {
   title: "Midline Code",
   description: "Web Development Agency",
@@ -27,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased h-full w-full bg-cover bg-center overflow-x-hidden`}
+        className={`${lato.className} antialiased h-full w-full bg-cover bg-center overflow-x-hidden`}
         style={{
           backgroundImage:
             "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/background.jpg')",

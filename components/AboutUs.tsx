@@ -5,7 +5,7 @@ const AboutUs = () => {
   return (
     <section
       id="about-us"
-      className="min-h-screen max-w-7xl mt-0 md:mt-[-250px] 2xl:mt-[-250px] mx-auto text-white flex flex-col items-center justify-center lg:gap-30"
+      className="max-w-7xl mt-15 mb-30 md:mt-0 mx-auto text-white flex flex-col items-center justify-center lg:gap-30"
     >
       <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold text-center">
         About Us

@@ -32,7 +32,7 @@ const Services = () => {
   return (
     <section
       id="services"
-      className="relative min-h-screen px-6 flex flex-col justify-center items-center bg-transparent md:mt-10 xl:mt-[-50px] 2xl:mt-[-100px] max-w-7xl mx-auto"
+      className="relative min-h-screen px-6 flex flex-col justify-center items-center bg-transparent max-w-7xl mx-auto"
     >
       <div className="text-center mb-12">
         <h2 className="text-4xl md:text-7xl lg:text-8xl font-bold text-white mb-4">
@@ -63,7 +63,8 @@ const Services = () => {
           onClick={() => setIsFormOpen(true)}
           whileHover={{ scale: 1.1, transition: { duration: 0.1 } }}
           whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
-          className="text-white cursor-pointer hover:bg-blue-500 mt-12 font-bold bg-blue-400 p-3 md:p-4 rounded-4xl text-lg md:w-[30%] lg:w-[30%] m-auto"
+          className="text-white cursor-pointer text-md md:text-lg bg-white/5 backdrop-blur-sm mt-12 font-bold hover:shadow-[0_0_20px_rgba(59,130,246,0.7)] 
+           transition-all duration-300 p-5 md:p-4 rounded-4xl text-lg md:w-[30%] lg:w-[30%] m-auto"
         >
           Start Your Project
         </motion.button>
