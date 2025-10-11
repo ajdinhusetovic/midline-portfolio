@@ -38,9 +38,8 @@ const OurProcess = () => {
               Design
             </h1>
             <p className="text-lg text-gray-300 ml-2 md:ml-8 mt-2">
-              We start by understanding your goals, ideas, and vision. We’ll
-              discuss what you need, what problems to solve, and what success
-              looks like.
+              We create a clear roadmap and design direction. Every layout,
+              color, and feature is planned with purpose.
             </p>
           </div>
         </div>
@@ -62,9 +61,8 @@ const OurProcess = () => {
               Support
             </h1>
             <p className="text-lg text-gray-300 ml-2 md:ml-8 mt-2">
-              We start by understanding your goals, ideas, and vision. We’ll
-              discuss what you need, what problems to solve, and what success
-              looks like.
+              Once your site is live, we provide ongoing support, updates, and
+              improvements so you can focus on growth.
             </p>
           </div>
         </div>
