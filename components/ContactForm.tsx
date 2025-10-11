@@ -52,7 +52,7 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
           animate={{ x: 0 }}
           exit={{ x: "100%" }}
           transition={{ type: "tween", duration: 0.4 }}
-          className="fixed top-0 right-0 w-full h-screen bg-black/80 backdrop-blur-md z-[100] flex flex-col p-6"
+          className="fixed top-0 right-0 w-full xl:w-[50%] h-screen bg-black/80 backdrop-blur-md z-[100] flex flex-col p-6"
         >
           <button
             onClick={onClose}
