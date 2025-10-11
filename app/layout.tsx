@@ -36,6 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <link rel="icon" href="/2.svg" />
       <body
         className={`${montserrat.className} antialiased h-full w-full bg-cover bg-center overflow-x-hidden`}
         style={{
