@@ -13,6 +13,7 @@ export default function Navbar() {
     { label: "Home", id: "home" },
     { label: "Services", id: "services" },
     { label: "About Us", id: "about-us" },
+    { label: "Our Process", id: "our-process" },
     { label: "Pricing Guide", id: "pricing-guide" },
   ];
 

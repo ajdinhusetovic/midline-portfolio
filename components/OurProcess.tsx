@@ -4,7 +4,10 @@ import { RxDoubleArrowDown } from "react-icons/rx";
 
 const OurProcess = () => {
   return (
-    <section className="text-white max-w-[90%] xl:max-w-7xl mx-auto">
+    <section
+      id="our-process"
+      className="text-white max-w-[90%] xl:max-w-7xl mx-auto"
+    >
       <div className="flex flex-col gap-4">
         <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold text-center">
           Our Process
