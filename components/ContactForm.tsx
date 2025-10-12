@@ -67,7 +67,7 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
             </h2>
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col gap-6 max-w-2xl mx-auto w-full text-white text-lg lg:text-xl pb-12"
+              className="flex flex-col items-center gap-6 max-w-2xl mx-auto w-full text-white text-lg lg:text-xl pb-12"
             >
               <input
                 type="text"
@@ -76,7 +76,7 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
                 onChange={handleChange}
                 placeholder="Your name*"
                 required
-                className="border-2 md:h-14 p-4 rounded-4xl font-bold"
+                className="border-1 w-[60%] md:h-14 p-4 rounded-4xl font-semibold"
               />
               <input
                 type="email"
@@ -85,7 +85,7 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
                 onChange={handleChange}
                 placeholder="Your email adress*"
                 required
-                className="border-2 md:h-14 p-4 rounded-4xl font-bold"
+                className="border-1 w-[60%] md:h-14 p-4 rounded-4xl font-semibold"
               />
               <textarea
                 name="message"
@@ -93,7 +93,7 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
                 onChange={handleChange}
                 placeholder="How can we help you?*"
                 required
-                className="border-2 resize-none h-40 lg:h-60 p-4 rounded-4xl font-bold"
+                className="border-1 resize-none w-[80%] h-40 lg:h-60 p-4 rounded-4xl font-semibold"
               />
               <motion.button
                 type="submit"
