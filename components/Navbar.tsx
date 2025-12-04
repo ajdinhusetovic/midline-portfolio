@@ -27,33 +27,33 @@ export default function Navbar() {
       <nav className="w-full fixed top-4 left-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex-shrink-0 mt-2 text-white font-bold text-4xl hidden lg:block">
-              <Image src={"/2.svg"} width={150} height={150} alt="Logo" />
+            <div className="flex-shrink-0 mt-2 text-slate-900 font-bold text-4xl hidden lg:block">
+              <Image src={"/1.svg"} width={150} height={150} alt="Logo" />
             </div>
 
-            <div className="hidden lg:flex space-x-8 px-6 py-3 rounded-4xl bg-white/8 backdrop-blur-md border border-white/2">
+            <div className="hidden lg:flex space-x-8 px-6 py-3 rounded-4xl">
               {navItems.map((item) =>
                 item.label === "Pricing Guide" ? (
                   // PDF link
                   <motion.a
-                    whileHover={{ scale: 1.2, transition: { duration: 0.1 } }}
-                    whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
+                    whileHover={{ scale: 1.2, transition: { duration: 0.2 } }}
+                    whileTap={{ scale: 0.9, transition: { duration: 0.2 } }}
                     key={item.label}
                     href="/brochure.pdf" // PDF in public folder
                     target="_blank" // opens in new tab
                     rel="noopener noreferrer"
-                    className="text-white cursor-pointer hover:text-blue-400 transition text-lg font-semibold"
+                    className="text-slate-900 cursor-pointer hover:text-blue-400 transition text-lg font-medium"
                   >
                     {item.label}
                   </motion.a>
                 ) : (
                   // regular scroll button
                   <motion.button
-                    whileHover={{ scale: 1.2, transition: { duration: 0.1 } }}
-                    whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
+                    whileHover={{ scale: 1.2, transition: { duration: 0.2 } }}
+                    whileTap={{ scale: 0.9, transition: { duration: 0.2 } }}
                     key={item.label}
                     onClick={() => scrollToSection(item.id.toLowerCase())}
-                    className="text-white cursor-pointer hover:text-blue-400 transition text-lg font-semibold"
+                    className="text-slate-900 cursor-pointer hover:text-blue-400 transition text-lg font-medium"
                   >
                     {item.label}
                   </motion.button>
@@ -63,10 +63,10 @@ export default function Navbar() {
 
             <div className="hidden lg:block">
               <motion.button
-                whileHover={{ scale: 1.1, transition: { duration: 0.1 } }}
-                whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
+                whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+                whileTap={{ scale: 0.9, transition: { duration: 0.2 } }}
                 onClick={() => setIsFormOpen(true)}
-                className="px-6 cursor-pointer py-3 hover:bg-blue-400 rounded-4xl bg-white text-black font-semibold transition text-lg"
+                className="px-6 cursor-pointer py-3 rounded-4xl bg-[#87CEEB] text-black font-medium transition text-lg"
               >
                 + Become a Client
               </motion.button>

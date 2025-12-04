@@ -5,6 +5,7 @@ import {
   Lato,
   Work_Sans,
   Montserrat,
+  Rubik,
 } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -23,6 +24,7 @@ const geistMono = Geist_Mono({
 const lato = Lato({ subsets: ["latin"], weight: ["400", "700"] });
 const workSans = Work_Sans({ subsets: ["latin"], weight: ["400", "700"] });
 const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "700"] });
+const rubik = Rubik({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata: Metadata = {
   title: "Midline Code",
@@ -38,15 +40,15 @@ export default function RootLayout({
     <html lang="en">
       <link rel="icon" href="/2.svg" />
       <body
-        className={`${montserrat.className} antialiased h-full w-full bg-cover bg-center overflow-x-hidden`}
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/background.jpg')",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover", // still good, but tweak position
-          backgroundPosition: "right center", // ensure the main part of image stays visible
-          backgroundAttachment: "scroll",
-        }}
+        className={`${rubik.className} antialiased h-full w-full bg-cover bg-center overflow-x-hidden`}
+        // style={{
+        //   backgroundImage:
+        //     "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/background.jpg')",
+        //   backgroundRepeat: "no-repeat",
+        //   backgroundSize: "cover", // still good, but tweak position
+        //   backgroundPosition: "right center", // ensure the main part of image stays visible
+        //   backgroundAttachment: "scroll",
+        // }}
       >
         <Navbar />
         <Toaster />

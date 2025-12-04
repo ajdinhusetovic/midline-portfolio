@@ -5,7 +5,7 @@ const AboutUs = () => {
   return (
     <section
       id="about-us"
-      className="max-w-7xl mt-15 mb-30 md:mt-0 md:mb-60 2xl:mb-100 mx-auto text-white flex flex-col items-center justify-center lg:gap-30"
+      className="max-w-7xl mt-15 mb-30 md:mt-0 md:mb-60 2xl:mb-100 mx-auto text-slate-900 flex flex-col items-center justify-center lg:gap-30"
     >
       <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold text-center">
         About Us
@@ -23,7 +23,7 @@ const AboutUs = () => {
           <h2 className="text-2xl lg:text-4xl font-semibold text-center xl:text-left">
             About MidlineCode
           </h2>
-          <p className="text-lg lg:text-lg text-gray-300 text-center xl:text-left">
+          <p className="text-lg lg:text-lg text-slate-600 text-center xl:text-left">
             We’re a small, passionate web studio dedicated to helping businesses
             thrive online. As a small team, we combine design and development
             expertise to create custom websites, web applications, and
