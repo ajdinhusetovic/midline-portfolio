@@ -83,7 +83,7 @@ const OurProcess = () => {
           className="text-slate-900 cursor-pointer text-md md:text-lg border shadow-lg hover:bg-[#87CEEB] my-12 font-bold 
            transition-all duration-300 p-4 md:p-4 rounded md:w-[30%] lg:w-[30%] m-auto"
         >
-          Start Your Project Today
+          Bring Your Idea to Life
         </motion.button>
         <ContactForm isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
       </div>
