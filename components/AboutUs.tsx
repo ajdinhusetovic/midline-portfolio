@@ -3,39 +3,55 @@ import React from "react";
 
 const AboutUs = () => {
   return (
-    <section
-      id="about-us"
-      className="max-w-7xl mt-15 mb-30 md:mt-0 md:mb-60 2xl:mb-100 mx-auto text-slate-900 flex flex-col items-center justify-center lg:gap-30"
-    >
-      <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold text-center">
-        About Us
-      </h1>
-      <div className="flex flex-col xl:flex-row gap-20 mt-16 lg:mt-0 lg:gap-30">
-        <Image
-          src="/map-team.svg"
-          alt="Map of the world"
-          width={500}
-          height={500}
-          className="w-full max-w-[200px] lg:max-w-[500px] h-auto mx-auto"
-        />
+    <div className="bg-[#87CEEB] my-16 pt-20 pb-30">
+      <section
+        id="about-us"
+        className="max-w-7xl mx-auto text-slate-900 flex flex-col items-center justify-center lg:gap-30"
+      >
+        <h1 className="text-4xl md:text-7xl lg:text-7xl font-bold text-center">
+          About Us
+        </h1>
+        <div className="flex flex-col xl:flex-row gap-20 mt-16 lg:mt-0 lg:gap-30 w-full">
+          <Image
+            src="/map-team.svg"
+            alt="Map of the world"
+            width={500}
+            height={500}
+            className="w-full max-w-[200px] lg:max-w-[500px] h-auto mx-auto"
+          />
 
-        <div className="flex flex-col gap-y-5 max-w-lg mx-auto px-4">
-          <h2 className="text-2xl lg:text-4xl font-semibold text-center xl:text-left">
-            About MidlineCode
-          </h2>
-          <p className="text-lg lg:text-lg text-slate-600 text-center xl:text-left">
-            We’re a small, passionate web studio dedicated to helping businesses
-            thrive online. As a small team, we combine design and development
-            expertise to create custom websites, web applications, and
-            e-commerce solutions tailored to your needs. Every project gets our
-            full attention, from the first idea to the final launch. We focus on
-            clean, modern design, smooth user experiences, and reliable
-            performance. Whether you’re a startup or an established business,
-            we’re here to help you stand out online.
-          </p>
+          <div className="flex flex-col gap-y-5 max-w-2xl mx-auto px-4 w-full">
+            <h2 className="text-2xl lg:text-3xl font-medium text-center xl:text-left">
+              About MidlineCode
+            </h2>
+            <p className="text-md lg:text-xl text-slate-800 text-center xl:text-left">
+              A North Carolina web development agency with strong local presence
+              in Fayetteville and clients across the United States and Europe.
+            </p>
+            <p className="text-md lg:text-xl text-slate-800 text-center xl:text-left">
+              We specialize in web development, digital marketing, social media
+              management, and professional photography. We give businesses
+              everything they need to build a strong and effective online
+              presence.
+            </p>
+            <p className="text-md lg:text-xl text-slate-800 text-center xl:text-left">
+              Our team combines clean design, powerful development, and
+              strategic marketing to create modern websites and digital
+              experiences that actually drive results. From small businesses in
+              Fayetteville to clients across the U.S. and Europe, we provide
+              high-quality, reliable, and tailored solutions for every stage of
+              growth.
+            </p>
+            <p className="text-md lg:text-xl text-slate-800 text-center xl:text-left">
+              Whether you need a new website, a brand identity, social media
+              content, or complete digital marketing support, we’re here to help
+              your business grow with a polished, consistent, and professional
+              online presence.
+            </p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 

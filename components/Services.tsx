@@ -2,6 +2,9 @@
 
 import React, { useState } from "react";
 import { Monitor, WandSparkles, Smartphone } from "@deemlol/next-icons";
+import { IoMegaphoneOutline } from "react-icons/io5";
+import { FaCamera } from "react-icons/fa";
+import { FiShare2 } from "react-icons/fi";
 import ContactForm from "./ContactForm";
 import { motion } from "framer-motion";
 
@@ -10,19 +13,31 @@ const services = [
     icon: <Monitor size={24} color="#4299e1" />,
     title: "Web Development",
     description:
-      "Custom websites built to your needs — modern, fast, and responsive.",
+      "Modern, fast, and fully responsive custom-coded websites built to elevate your online presence. Modern, fast, and fully responsive websites built to elevate your online presence.",
   },
   {
     icon: <WandSparkles size={24} color="#4299e1" />,
     title: "Graphic Design",
     description:
-      "Eye-catching visuals for your brand, marketing, and digital presence.",
+      "High-quality visuals that support your brand everywhere. We design social media content, marketing materials, product packaging, and print assets that help communicate your message clearly and professionally.",
   },
   {
-    icon: <Smartphone size={24} color="#4299e1" />,
-    title: "Branding",
+    icon: <IoMegaphoneOutline size={26} color="#4299e1" />,
+    title: "Digital Marketing",
     description:
-      "Crafting a unique identity that makes your business memorable.",
+      "Grow your visibility and attract your ideal customers. We create results-focused campaigns, including SEO, paid advertising (Google & Meta), email marketing, and analytics, fully tailored to your goals.",
+  },
+  {
+    icon: <FiShare2 size={24} color="#4299e1" />,
+    title: "Social Media Management",
+    description:
+      "Stay active, relevant, and connected to your audience. We handle content creation, posting schedules, engagement, and growth strategies keeping your social channels consistent and impactful.",
+  },
+  {
+    icon: <FaCamera size={24} color="#4299e1" />,
+    title: "Photography & Content Production",
+    description:
+      "Professional, in-house photography for your brand. We produce high-quality photos for websites, ads, products, staff profiles, and social media, giving your brand a premium, polished look.",
   },
 ];
 
@@ -32,14 +47,15 @@ const Services = () => {
   return (
     <section
       id="services"
-      className="relative min-h-screen px-6 flex flex-col justify-center items-center bg-transparent max-w-7xl mx-auto"
+      className="relative mt-16 xl:mt-32 px-6 flex flex-col justify-center items-center bg-transparent max-w-7xl mx-auto"
     >
       <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-7xl lg:text-8xl font-bold text-slate-900 mb-4">
+        <h2 className="text-4xl md:text-7xl lg:text-7xl font-semibold text-slate-900 mb-4">
           Our Services
         </h2>
-        <p className="text-lg md:text-2xl lg:text-2xl text-slate-500 font-semibold">
-          We help businesses grow with creative and effective digital solutions
+        <p className="text-lg md:text-2xl lg:text-2xl text-slate-700 font-medium">
+          We help businesses grow with creative, high-impact, and fully tailored
+          digital solutions.
         </p>
       </div>
 
@@ -47,12 +63,12 @@ const Services = () => {
         {services.map((service) => (
           <div
             key={service.title}
-            className=" rounded-2xl p-12 text-center shadow-lg hover:scale-105 transition-transform duration-300"
+            className="border p-12 text-center shadow-lg hover:scale-105 transition-transform duration-300"
           >
-            <h3 className="text-lg lg:text-2xl font-bold text-blue-400 mb-3 flex flex-row items-center justify-center gap-1 md:gap-2 lg:gap-4">
+            <h3 className="text-lg lg:text-2xl font-bold text-blue-400 mb-3 flex flex-col items-center justify-center gap-1 md:gap-2 lg:gap-4">
               <span>{service.icon}</span> {service.title}
             </h3>
-            <p className="text-slate-800 text-md font-semibold">
+            <p className="text-slate-800 text-md md:text-lg font-medium">
               {service.description}
             </p>
           </div>
@@ -61,12 +77,12 @@ const Services = () => {
       <div className="w-full flex items-center justify-center">
         <motion.button
           onClick={() => setIsFormOpen(true)}
-          whileHover={{ scale: 1.1, transition: { duration: 0.1 } }}
-          whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
-          className="text-white cursor-pointer text-md md:text-lg bg-white/5 backdrop-blur-sm mt-12 font-bold hover:shadow-[0_0_20px_rgba(59,130,246,0.7)] 
-           transition-all duration-300 p-5 md:p-4 rounded-4xl text-lg md:w-[30%] lg:w-[30%] m-auto"
+          whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+          whileTap={{ scale: 0.9, transition: { duration: 0.2 } }}
+          className="text-slate-900 cursor-pointer text-md md:text-lg bg-[#87CEEB] my-12 font-bold 
+           transition-all duration-300 p-4 md:p-4 rounded md:w-[30%] lg:w-[30%] m-auto"
         >
-          Start Your Project
+          Start Your Project Today
         </motion.button>
       </div>
       <ContactForm isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />

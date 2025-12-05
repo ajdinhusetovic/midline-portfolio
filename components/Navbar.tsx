@@ -1,13 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import ContactForm from "./ContactForm";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const navItems = [
     { label: "Home", id: "home" },
@@ -22,9 +24,22 @@ export default function Navbar() {
     if (element) element.scrollIntoView({ behavior: "smooth" });
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) setScrolled(true);
+      else setScrolled(false);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  });
+
   return (
     <>
-      <nav className="w-full fixed top-4 left-0 z-50">
+      <nav
+        className={`w-full fixed top-0 left-0 z-50 transition-colors duration-300 ${
+          scrolled ? "md:bg-white md:shadow-md" : "bg-transparent"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex-shrink-0 mt-2 text-slate-900 font-bold text-4xl hidden lg:block">
@@ -66,7 +81,7 @@ export default function Navbar() {
                 whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                 whileTap={{ scale: 0.9, transition: { duration: 0.2 } }}
                 onClick={() => setIsFormOpen(true)}
-                className="px-6 cursor-pointer py-3 rounded-4xl bg-[#87CEEB] text-black font-medium transition text-lg"
+                className="px-6 cursor-pointer py-3 rounded bg-[#87CEEB] text-black font-medium transition text-lg"
               >
                 + Become a Client
               </motion.button>
@@ -77,7 +92,7 @@ export default function Navbar() {
                 onClick={() => setIsOpen(!isOpen)}
                 className="text-white text-4xl focus:outline-none"
               >
-                {isOpen ? "" : "≡"}
+                {isOpen ? "" : <GiHamburgerMenu color="black" />}
               </button>
             </div>
           </div>

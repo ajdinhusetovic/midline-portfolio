@@ -1,18 +1,24 @@
-import React from "react";
+"use client";
+
+import { motion } from "framer-motion";
+import React, { useState } from "react";
 import { GiArchiveResearch } from "react-icons/gi";
 import { RxDoubleArrowDown } from "react-icons/rx";
+import ContactForm from "./ContactForm";
 
 const OurProcess = () => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
   return (
     <section
       id="our-process"
-      className="text-slate-900 max-w-[90%] xl:max-w-7xl mx-auto"
+      className="text-slate-900 max-w-[90%] xl:max-w-7xl mx-auto mt-24"
     >
       <div className="flex flex-col gap-4">
-        <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold text-center">
+        <h1 className="text-4xl md:text-7xl lg:text-7xl font-bold text-center">
           Our Process
         </h1>
-        <p className="text-center text-lg md:text-2xl text-slate-600 font-semibold">
+        <p className="text-center text-lg md:text-2xl text-slate-700 font-medium">
           We follow a simple and transparent process to make your project
           stress-free from start to finish.
         </p>
@@ -68,6 +74,18 @@ const OurProcess = () => {
             </p>
           </div>
         </div>
+      </div>
+      <div className="w-full flex items-center justify-center">
+        <motion.button
+          onClick={() => setIsFormOpen(true)}
+          whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+          whileTap={{ scale: 0.9, transition: { duration: 0.2 } }}
+          className="text-slate-900 cursor-pointer text-md md:text-lg border shadow-lg hover:bg-[#87CEEB] my-12 font-bold 
+           transition-all duration-300 p-4 md:p-4 rounded md:w-[30%] lg:w-[30%] m-auto"
+        >
+          Start Your Project Today
+        </motion.button>
+        <ContactForm isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
       </div>
     </section>
   );
