@@ -47,7 +47,7 @@ const Services = () => {
   return (
     <section
       id="services"
-      className="relative mt-16 xl:mt-32 px-6 flex flex-col justify-center items-center bg-transparent max-w-7xl mx-auto"
+      className="relative mt-16 xl:mt-32 px-6 flex flex-col justify-center items-center bg-transparent max-w-6xl mx-auto"
     >
       <div className="text-center mb-12">
         <h2 className="text-4xl md:text-7xl lg:text-7xl font-semibold text-slate-900 mb-4">
@@ -63,7 +63,7 @@ const Services = () => {
         {services.map((service) => (
           <div
             key={service.title}
-            className="border p-12 text-center shadow-lg hover:scale-105 transition-transform duration-300"
+            className="border p-8 text-center shadow-lg hover:scale-105 transition-transform duration-300"
           >
             <h3 className="text-lg lg:text-2xl font-bold text-blue-400 mb-3 flex flex-col items-center justify-center gap-1 md:gap-2 lg:gap-4">
               <span>{service.icon}</span> {service.title}
