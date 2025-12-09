@@ -3,7 +3,7 @@ import React from "react";
 
 const AboutUs = () => {
   return (
-    <div className="bg-[#87CEEB] my-16 pt-20 pb-30">
+    <div className="bg-[#87CEEB] my-16 pt-12 pb-10">
       <section
         id="about-us"
         className="max-w-7xl mx-auto text-slate-900 flex flex-col items-center justify-center lg:gap-30"
