@@ -6,7 +6,7 @@ const AboutUs = () => {
     <div className="bg-[#87CEEB] my-16 pt-12 pb-10">
       <section
         id="about-us"
-        className="max-w-7xl mx-auto text-slate-900 flex flex-col items-center justify-center lg:gap-30"
+        className="max-w-7xl mx-auto text-slate-900 flex flex-col items-center justify-center lg:gap-12"
       >
         <h1 className="text-4xl md:text-7xl lg:text-7xl font-bold text-center">
           About Us

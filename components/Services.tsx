@@ -77,10 +77,9 @@ const Services = () => {
       <div className="w-full flex items-center justify-center">
         <motion.button
           onClick={() => setIsFormOpen(true)}
-          whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
-          whileTap={{ scale: 0.9, transition: { duration: 0.2 } }}
-          className="text-slate-900 cursor-pointer text-md md:text-lg bg-[#87CEEB] my-12 font-bold 
-           transition-all duration-300 p-4 md:p-4 rounded md:w-[30%] lg:w-[30%] m-auto"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="text-slate-900 cursor-pointer text-md md:text-lg bg-[#87CEEB] my-12 font-semibold p-4 md:p-4 rounded md:w-[30%] lg:w-[30%] m-auto"
         >
           Start Your Project Today
         </motion.button>

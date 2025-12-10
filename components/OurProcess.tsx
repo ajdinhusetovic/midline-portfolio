@@ -21,7 +21,7 @@ const ProcessCard = ({ number, title, text }: ProcessCardProps) => {
       },
       {
         threshold: 1, // trigger when 60% visible
-      }
+      },
     );
 
     if (ref.current) observer.observe(ref.current);
@@ -39,7 +39,7 @@ const ProcessCard = ({ number, title, text }: ProcessCardProps) => {
           style={{ clipPath: "polygon(0 0, 100% 0, 95% 100%, 0% 100%)" }}
           initial={{ x: "-100%" }}
           animate={{ x: isVisible ? "0%" : "-100%" }} // now it goes back when out of view
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         />
 
         <div className="relative z-10">
@@ -48,11 +48,7 @@ const ProcessCard = ({ number, title, text }: ProcessCardProps) => {
               isVisible ? "text-white" : "text-slate-900"
             }`}
           >
-            <span
-              className={`text-4xl md:text-6xl transition-colors duration-300 ${
-                isVisible ? "text-white" : "text-blue-400"
-              }`}
-            >
+            <span className="text-4xl md:text-6xl transition-colors duration-300 text-blue-400">
               {number}
             </span>{" "}
             | {title}
@@ -126,8 +122,8 @@ const OurProcess = () => {
         <motion.button
           onClick={() => setIsFormOpen(true)}
           whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          className="text-slate-900 cursor-pointer text-md md:text-lg border shadow-lg hover:bg-[#87CEEB] my-12 font-bold transition-all duration-300 p-4 rounded md:w-[30%] lg:w-[30%] m-auto"
+          whileTap={{ scale: 0.9 }}
+          className="text-slate-900 cursor-pointer text-md md:text-lg border shadow-lg hover:bg-[#87CEEB] my-12 font-semibold p-4 rounded md:w-[30%] lg:w-[30%] m-auto"
         >
           Bring Your Idea to Life
         </motion.button>

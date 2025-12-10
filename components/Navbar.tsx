@@ -16,7 +16,7 @@ export default function Navbar() {
     { label: "Services", id: "services" },
     { label: "About Us", id: "about-us" },
     { label: "Our Process", id: "our-process" },
-    { label: "Pricing Guide", id: "pricing-guide" },
+    // { label: "Pricing Guide", id: "pricing-guide" },
   ];
 
   const scrollToSection = (id: string) => {
@@ -51,37 +51,37 @@ export default function Navbar() {
                 item.label === "Pricing Guide" ? (
                   // PDF link
                   <motion.a
-                    whileHover={{ scale: 1.2, transition: { duration: 0.2 } }}
-                    whileTap={{ scale: 0.9, transition: { duration: 0.2 } }}
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.9 }}
                     key={item.label}
                     href="/brochure.pdf" // PDF in public folder
                     target="_blank" // opens in new tab
                     rel="noopener noreferrer"
-                    className="text-slate-900 cursor-pointer hover:text-blue-400 transition text-lg font-medium"
+                    className="text-slate-900 cursor-pointer hover:text-blue-400 text-lg font-medium"
                   >
                     {item.label}
                   </motion.a>
                 ) : (
                   // regular scroll button
                   <motion.button
-                    whileHover={{ scale: 1.2, transition: { duration: 0.2 } }}
-                    whileTap={{ scale: 0.9, transition: { duration: 0.2 } }}
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.9 }}
                     key={item.label}
                     onClick={() => scrollToSection(item.id.toLowerCase())}
-                    className="text-slate-900 cursor-pointer hover:text-blue-400 transition text-lg font-medium"
+                    className="text-slate-900 cursor-pointer hover:text-blue-400 text-lg font-medium"
                   >
                     {item.label}
                   </motion.button>
-                )
+                ),
               )}
             </div>
 
             <div className="hidden lg:block">
               <motion.button
-                whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
-                whileTap={{ scale: 0.9, transition: { duration: 0.2 } }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
                 onClick={() => setIsFormOpen(true)}
-                className="px-6 cursor-pointer py-3 rounded bg-[#87CEEB] text-black font-medium transition text-lg"
+                className="px-6 cursor-pointer py-3 rounded bg-[#87CEEB] text-black font-medium text-lg"
               >
                 + Become a Client
               </motion.button>
@@ -137,7 +137,7 @@ export default function Navbar() {
                   >
                     {item.label}
                   </motion.button>
-                )
+                ),
               )}
               <button
                 onClick={() => setIsFormOpen(true)}
