@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import ContactForm from "./ContactForm";
-import { GiHamburgerMenu } from "react-icons/gi";
+import { HiMenu, HiX } from "react-icons/hi";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,145 +12,115 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   const navItems = [
-    { label: "Home", id: "home" },
+    { label: "About", id: "about-us" },
     { label: "Services", id: "services" },
-    { label: "About Us", id: "about-us" },
-    { label: "Our Process", id: "our-process" },
-    // { label: "Pricing Guide", id: "pricing-guide" },
+    { label: "Process", id: "our-process" },
   ];
 
-  const scrollToSection = (id: string) => {
+  const scrollToSection = (id) => {
     const element = document.getElementById(id);
-    if (element) element.scrollIntoView({ behavior: "smooth" });
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      setIsOpen(false);
+    }
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) setScrolled(true);
-      else setScrolled(false);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  });
+  }, []);
 
   return (
     <>
       <nav
-        className={`w-full fixed top-0 p-1 left-0 z-50 transition-colors duration-300 ${
-          scrolled ? "md:bg-white md:shadow-md" : "bg-transparent"
+        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-white/80 backdrop-blur-md shadow-sm py-0"
+            : "bg-transparent py-6"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex-shrink-0 mt-2 text-slate-900 font-bold text-4xl hidden lg:block">
-              <Image src={"/1.svg"} width={150} height={150} alt="Logo" />
-            </div>
-
-            <div className="hidden lg:flex space-x-8 px-6 py-3 rounded-4xl">
-              {navItems.map((item) =>
-                item.label === "Pricing Guide" ? (
-                  // PDF link
-                  <motion.a
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
-                    key={item.label}
-                    href="/brochure.pdf" // PDF in public folder
-                    target="_blank" // opens in new tab
-                    rel="noopener noreferrer"
-                    className="text-slate-900 cursor-pointer hover:text-blue-400 text-lg font-medium"
-                  >
-                    {item.label}
-                  </motion.a>
-                ) : (
-                  // regular scroll button
-                  <motion.button
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
-                    key={item.label}
-                    onClick={() => scrollToSection(item.id.toLowerCase())}
-                    className="text-slate-900 cursor-pointer hover:text-blue-400 text-lg font-medium"
-                  >
-                    {item.label}
-                  </motion.button>
-                ),
-              )}
-            </div>
-
-            <div className="hidden lg:block">
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={() => setIsFormOpen(true)}
-                className="px-6 cursor-pointer py-3 rounded bg-[#87CEEB] text-black font-medium text-lg"
-              >
-                + Become a Client
-              </motion.button>
-            </div>
-
-            <div className="lg:hidden">
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="text-white text-4xl focus:outline-none"
-              >
-                {isOpen ? "" : <GiHamburgerMenu color="black" />}
-              </button>
-            </div>
+        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+          {/* Logo */}
+          <div className="cursor-pointer" onClick={() => window.scrollTo(0, 0)}>
+            <Image
+              src="/1.svg"
+              width={120}
+              height={40}
+              alt="MidlineCode Logo"
+            />
           </div>
-        </div>
 
-        {/* Mobile Dropdown */}
-        <div
-          className={`lg:hidden fixed top-0 left-0 w-full h-screen bg-black/70 backdrop-blur-md z-40 flex flex-col items-center justify-center overflow-y-auto transition-all duration-300 ease-in-out ${
-            isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-          }`}
-        >
-          <div className="flex flex-col items-center justify-start w-full h-full">
+          {/* Desktop Nav */}
+          <div className="hidden lg:flex items-center gap-8">
+            {navItems.map((item) => (
+              <button
+                key={item.label}
+                onClick={() => scrollToSection(item.id)}
+                className="text-slate-700 hover:text-[#87CEEB] font-medium transition-colors hover:cursor-pointer"
+              >
+                {item.label}
+              </button>
+            ))}
             <button
-              onClick={() => setIsOpen(false)}
-              className="self-end text-4xl text-white font-bold p-6"
+              onClick={() => setIsFormOpen(true)}
+              className="px-6 py-2.5 hover:cursor-pointer bg-slate-900 text-white font-bold rounded-lg hover:bg-[#87CEEB] transition-all"
             >
-              ×
+              Contact Us
             </button>
-            <div className="flex flex-col items-center justify-center h-full space-y-6">
-              {navItems.map((item) =>
-                item.label === "Pricing Guide" ? (
-                  // PDF link
-                  <motion.a
-                    whileHover={{ scale: 1.2, transition: { duration: 0.1 } }}
-                    whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
-                    key={item.label}
-                    href="/brochure.pdf" // PDF in public folder
-                    target="_blank" // opens in new tab
-                    rel="noopener noreferrer"
-                    className="text-white cursor-pointer hover:text-blue-400 transition text-lg font-semibold"
-                  >
-                    {item.label}
-                  </motion.a>
-                ) : (
-                  // regular scroll button
-                  <motion.button
-                    whileHover={{ scale: 1.2, transition: { duration: 0.1 } }}
-                    whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
-                    key={item.label}
-                    onClick={() => scrollToSection(item.id.toLowerCase())}
-                    className="text-white cursor-pointer hover:text-blue-400 transition text-lg font-semibold"
-                  >
-                    {item.label}
-                  </motion.button>
-                ),
-              )}
-              <button
-                onClick={() => setIsFormOpen(true)}
-                className="mt-4 cursor-pointer px-6 py-3 rounded-4xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
-              >
-                + Become a Client
-              </button>
-            </div>
           </div>
+
+          {/* Mobile Menu Trigger */}
+          <button
+            className="lg:hidden text-slate-900 text-3xl"
+            onClick={() => setIsOpen(true)}
+          >
+            <HiMenu />
+          </button>
         </div>
       </nav>
 
-      {/* Reusable Contact Form */}
+      {/* Mobile Sidebar */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            className="fixed inset-0 z-50 bg-white p-6 lg:hidden"
+          >
+            <div className="flex justify-end mb-12">
+              <button
+                onClick={() => setIsOpen(false)}
+                className="text-4xl text-slate-900"
+              >
+                <HiX />
+              </button>
+            </div>
+            <div className="flex flex-col gap-8 text-center">
+              {navItems.map((item) => (
+                <button
+                  key={item.label}
+                  onClick={() => scrollToSection(item.id)}
+                  className="text-2xl font-bold text-slate-900"
+                >
+                  {item.label}
+                </button>
+              ))}
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                  setIsFormOpen(true);
+                }}
+                className="px-8 py-4 bg-[#87CEEB] text-slate-900 font-bold rounded-xl hover:cursor-pointer"
+              >
+                Contact Us
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <ContactForm isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
     </>
   );

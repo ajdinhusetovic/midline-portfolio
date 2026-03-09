@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
 import { Spinner } from "./ui/spinner";
+import { HiX } from "react-icons/hi";
 
 interface ContactFormProps {
   isOpen: boolean;
@@ -16,9 +17,7 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
     email: "",
     message: "",
   });
-
   const [isSending, setIsSending] = useState(false);
-
   const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -27,14 +26,8 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
         onClose();
       }
     }
-
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    if (isOpen) document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen, onClose]);
 
   const handleChange = (
@@ -46,7 +39,6 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (isSending) return;
-
     setIsSending(true);
 
     try {
@@ -59,40 +51,24 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
       if (res.ok) {
         toast.success("Your email has been sent successfully", {
           style: {
-            "--normal-bg":
-              "light-dark(var(--color-green-600), var(--color-green-400))",
+            "--normal-bg": "var(--color-green-600)",
             "--normal-text": "var(--color-white)",
-            "--normal-border":
-              "light-dark(var(--color-green-600), var(--color-green-400))",
+            "--normal-border": "transparent",
           } as React.CSSProperties,
         });
         setFormData({ name: "", email: "", message: "" });
         onClose();
       } else {
-        toast(
-          "There was an error sending your email. Send us an email directly or try again later!",
-          {
-            style: {
-              "--normal-bg":
-                "light-dark(var(--destructive), color-mix(in oklab, var(--destructive) 60%, var(--background)))",
-              "--normal-text": "var(--color-white)",
-              "--normal-border": "transparent",
-            } as React.CSSProperties,
-          },
-        );
+        throw new Error("Failed to send");
       }
     } catch (err) {
-      toast(
-        "There was an error sending your email. Send us an email directly or try again later!",
-        {
-          style: {
-            "--normal-bg":
-              "light-dark(var(--destructive), color-mix(in oklab, var(--destructive) 60%, var(--background)))",
-            "--normal-text": "var(--color-white)",
-            "--normal-border": "transparent",
-          } as React.CSSProperties,
-        },
-      );
+      toast("Error sending email. Try again later!", {
+        style: {
+          "--normal-bg": "var(--destructive)",
+          "--normal-text": "var(--color-white)",
+          "--normal-border": "transparent",
+        } as React.CSSProperties,
+      });
       console.error(err);
     } finally {
       setIsSending(false);
@@ -102,74 +78,90 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div
-          ref={panelRef}
-          initial={{ x: "100%" }}
-          animate={{ x: 0 }}
-          exit={{ x: "100%" }}
-          transition={{ type: "tween", duration: 0.4 }}
-          className="fixed top-0 right-0 w-full xl:w-[50%] h-screen bg-black/80 backdrop-blur-md z-[100] flex flex-col p-6"
-        >
-          <button
-            onClick={onClose}
-            className="self-end text-3xl text-white font-bold"
+        <>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[99]"
+          />
+          <motion.div
+            ref={panelRef}
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="fixed top-0 right-0 w-full xl:w-[45%] h-screen bg-white z-[100] p-8 md:p-12 shadow-2xl flex flex-col overflow-y-auto"
           >
-            ×
-          </button>
-
-          <div className="flex flex-col flex-1 overflow-y-auto mt-4">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl text-white text-center font-bold mb-6">
-              Contact Us
-            </h2>
-
-            <form
-              onSubmit={handleSubmit}
-              className="flex flex-col items-center gap-6 max-w-2xl mx-auto w-full text-white text-md md:text-lg lg:text-xl pb-12"
+            <button
+              onClick={onClose}
+              className="absolute top-8 right-8 text-slate-400 hover:text-slate-900 text-3xl transition"
             >
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Your name*"
-                required
-                className="border-1 w-10/12 md:w-11/12 md:h-14 p-3 md:p-4 rounded font-medium"
-              />
+              <HiX />
+            </button>
 
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Your email adress*"
-                required
-                className="border-1 w-10/12 md:w-11/12 md:h-14 p-3 md:p-4 rounded font-medium"
-              />
+            <h2 className="text-4xl font-extrabold text-slate-900 mb-2">
+              Let's build.
+            </h2>
+            <p className="text-slate-500 mb-10">
+              Tell us about your project and we'll get back to you shortly.
+            </p>
 
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="How can we help you?*"
-                required
-                className="border-1 resize-none w-10/12 md:w-11/12 h-40 lg:h-60 p-3 md:p-4 rounded font-medium"
-              />
+            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+              <div className="flex flex-col gap-2">
+                <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-slate-50 border border-slate-200 p-4 rounded-xl focus:border-[#87CEEB] focus:ring-1 focus:ring-[#87CEEB] outline-none transition"
+                />
+              </div>
 
-              {!isSending && (
-                <motion.button
-                  type="submit"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="w-7/12 md:w-5/12 mx-auto px-6 py-3 lg:py-3 rounded text-lg md:text-xl font-medium bg-blue-400 hover:bg-blue-700 cursor-pointer text-white"
-                >
-                  Get in Touch
-                </motion.button>
-              )}
+              <div className="flex flex-col gap-2">
+                <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-slate-50 border border-slate-200 p-4 rounded-xl focus:border-[#87CEEB] focus:ring-1 focus:ring-[#87CEEB] outline-none transition"
+                />
+              </div>
 
-              {isSending && <Spinner className="size-6 md:size-8" />}
+              <div className="flex flex-col gap-2">
+                <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                  Message
+                </label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={6}
+                  required
+                  className="w-full bg-slate-50 border border-slate-200 p-4 rounded-xl focus:border-[#87CEEB] focus:ring-1 focus:ring-[#87CEEB] outline-none transition resize-none"
+                />
+              </div>
+
+              <motion.button
+                type="submit"
+                disabled={isSending}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full bg-slate-900 text-white font-bold py-4 rounded-xl hover:bg-[#87CEEB] transition-all flex items-center justify-center gap-2"
+              >
+                {isSending ? <Spinner /> : "Send Message"}
+              </motion.button>
             </form>
-          </div>
-        </motion.div>
+          </motion.div>
+        </>
       )}
     </AnimatePresence>
   );

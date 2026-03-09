@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Monitor, WandSparkles, Smartphone } from "@deemlol/next-icons";
+import { Monitor, WandSparkles } from "@deemlol/next-icons";
 import { IoMegaphoneOutline } from "react-icons/io5";
 import { FaCamera } from "react-icons/fa";
 import { FiShare2 } from "react-icons/fi";
@@ -10,80 +10,117 @@ import { motion } from "framer-motion";
 
 const services = [
   {
-    icon: <Monitor size={24} color="#4299e1" />,
+    icon: <Monitor size={32} className="text-[#87CEEB]" />,
     title: "Web Development",
     description:
-      "Modern, fast, and fully responsive custom-coded websites built to elevate your online presence. Modern, fast, and fully responsive websites built to elevate your online presence.",
+      "High-performance, custom-coded websites built with React and Next.js. We focus on speed, scalability, and seamless user experiences that convert visitors into customers.",
   },
   {
-    icon: <WandSparkles size={24} color="#4299e1" />,
+    icon: <IoMegaphoneOutline size={32} className="text-[#87CEEB]" />,
+    title: "Digital Marketing & SEO",
+    description:
+      "Data-driven strategies to scale your reach. From specialized SEO audits to targeted Meta and Google ads, we ensure your business ranks high and stays visible.",
+  },
+  {
+    icon: <WandSparkles size={32} className="text-[#87CEEB]" />,
     title: "Graphic Design",
     description:
-      "High-quality visuals that support your brand everywhere. We design social media content, marketing materials, product packaging, and print assets that help communicate your message clearly and professionally.",
+      "Premium brand identities and marketing assets. We craft professional logos, social media kits, and print materials that communicate your brand's value clearly.",
   },
   {
-    icon: <IoMegaphoneOutline size={26} color="#4299e1" />,
-    title: "Digital Marketing",
+    icon: <FaCamera size={32} className="text-[#87CEEB]" />,
+    title: "Photography & Production",
     description:
-      "Grow your visibility and attract your ideal customers. We create results-focused campaigns, including SEO, paid advertising (Google & Meta), email marketing, and analytics, fully tailored to your goals.",
+      "Professional in-house content production. We provide high-end photography for products, staff profiles, and marketing campaigns to give your site a polished edge.",
   },
   {
-    icon: <FiShare2 size={24} color="#4299e1" />,
+    icon: <FiShare2 size={32} className="text-[#87CEEB]" />,
     title: "Social Media Management",
     description:
-      "Stay active, relevant, and connected to your audience. We handle content creation, posting schedules, engagement, and growth strategies keeping your social channels consistent and impactful.",
-  },
-  {
-    icon: <FaCamera size={24} color="#4299e1" />,
-    title: "Photography & Content Production",
-    description:
-      "Professional, in-house photography for your brand. We produce high-quality photos for websites, ads, products, staff profiles, and social media, giving your brand a premium, polished look.",
+      "Complete social media oversight. We handle content scheduling, audience engagement, and growth strategies to keep your brand relevant across all platforms.",
   },
 ];
 
 const Services = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
+  // Animation variants for the container
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 },
+    },
+  };
+
+  // Animation variants for individual cards
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { y: 0, opacity: 1 },
+  };
+
   return (
-    <section
-      id="services"
-      className="relative mt-16 xl:mt-32 px-6 flex flex-col justify-center items-center bg-transparent max-w-6xl mx-auto"
-    >
-      <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-7xl lg:text-7xl font-semibold text-slate-900 mb-4">
-          Our Services
-        </h2>
-        <p className="text-lg md:text-2xl lg:text-2xl text-slate-700 font-medium">
-          We help businesses grow with creative, high-impact, and fully tailored
-          digital solutions.
-        </p>
+    <section id="services" className="py-24 bg-slate-50/50">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Header */}
+        <div className="max-w-3xl mb-16">
+          <h2 className="text-[#87CEEB] font-bold tracking-widest uppercase text-sm mb-4">
+            Our Expertise
+          </h2>
+          <h3 className="text-4xl md:text-6xl font-extrabold text-slate-900 mb-6">
+            Scalable Solutions for <br /> Modern Businesses.
+          </h3>
+          <p className="text-lg text-slate-600 leading-relaxed">
+            We provide the technical and creative infrastructure needed to grow.
+            From Fayetteville to the global market, our services are tailored
+            for impact.
+          </p>
+        </div>
+
+        {/* Services Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+        >
+          {services.map((service, index) => (
+            <motion.div
+              key={service.title}
+              variants={itemVariants}
+              className="group bg-white p-10 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#87CEEB]/20 transition-all duration-300 flex flex-col items-start text-left"
+            >
+              <div className="mb-6 p-3 bg-slate-50 rounded-xl group-hover:bg-[#87CEEB]/10 transition-colors">
+                {service.icon}
+              </div>
+              <h4 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-[#87CEEB] transition-colors">
+                {service.title}
+              </h4>
+              <p className="text-slate-600 leading-relaxed font-medium">
+                {service.description}
+              </p>
+            </motion.div>
+          ))}
+
+          {/* Special CTA Card */}
+          <motion.div
+            variants={itemVariants}
+            className="bg-[#87CEEB] p-10 rounded-2xl flex flex-col justify-between text-white"
+          >
+            <h4 className="text-2xl font-bold leading-tight">
+              Ready to start your next project with us?
+            </h4>
+            <button
+              onClick={() => setIsFormOpen(true)}
+              className="mt-8 bg-white text-slate-900 font-bold py-4 px-6 rounded-xl hover:bg-slate-100 transition-colors shadow-lg"
+            >
+              Get a Free Quote
+            </button>
+          </motion.div>
+        </motion.div>
       </div>
 
-      <div className="grid gap-8 sm:w-[50%] md:w-[50%] xl:w-full md:grid-cols-1 xl:grid-cols-3">
-        {services.map((service) => (
-          <div
-            key={service.title}
-            className="border p-8 text-center shadow-lg hover:scale-105 transition-transform duration-300"
-          >
-            <h3 className="text-lg lg:text-2xl font-bold text-blue-400 mb-3 flex flex-col items-center justify-center gap-1 md:gap-2 lg:gap-4">
-              <span>{service.icon}</span> {service.title}
-            </h3>
-            <p className="text-slate-800 text-md md:text-lg font-medium">
-              {service.description}
-            </p>
-          </div>
-        ))}
-      </div>
-      <div className="w-full flex items-center justify-center">
-        <motion.button
-          onClick={() => setIsFormOpen(true)}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className="text-slate-900 cursor-pointer text-md md:text-lg bg-[#87CEEB] my-12 font-semibold p-4 md:p-4 rounded md:w-[30%] lg:w-[30%] m-auto"
-        >
-          Start Your Project Today
-        </motion.button>
-      </div>
       <ContactForm isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
     </section>
   );
