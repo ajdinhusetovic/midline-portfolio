@@ -17,7 +17,7 @@ export default function Navbar() {
     { label: "Process", id: "our-process" },
   ];
 
-  const scrollToSection = (id) => {
+  const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });

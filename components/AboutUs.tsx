@@ -74,8 +74,8 @@ const AboutUs = () => {
                   Fayetteville, North Carolina
                 </span>
                 , MidlineCode has grown into a versatile digital powerhouse. We
-                don't just install templates; we architect the technical engines
-                that power modern brands.
+                {"don't"} just install templates; we architect the technical
+                engines that power modern brands.
               </p>
 
               <p>
