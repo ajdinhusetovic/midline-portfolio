@@ -101,10 +101,10 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
             </button>
 
             <h2 className="text-4xl font-extrabold text-slate-900 mb-2">
-              Let's build.
+              {"Let's"} build.
             </h2>
             <p className="text-slate-500 mb-10">
-              Tell us about your project and we'll get back to you shortly.
+              Tell us about your project and {"we'll"} get back to you shortly.
             </p>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
