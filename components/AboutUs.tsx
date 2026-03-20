@@ -73,7 +73,7 @@ const AboutUs = () => {
                 <span className="font-semibold text-slate-900 underline decoration-[#87CEEB] decoration-2 underline-offset-4">
                   Fayetteville, North Carolina
                 </span>
-                , MidlineCode has grown into a versatile digital powerhouse. We
+                , MidlineCode has grown into a versatile digital powerhouse. We{" "}
                 {"don't"} just install templates; we architect the technical
                 engines that power modern brands.
               </p>
