@@ -51,7 +51,9 @@ const WhyDigitalMatters = () => {
             </h2>
             <h3 className="text-4xl md:text-5xl font-extrabold mb-8 leading-tight tracking-tight">
               A website isn&apos;t an expense. <br />
-              <span className="text-blue-400 italic">It's an investment.</span>
+              <span className="text-blue-400 italic">
+                It&apos;s an investment.
+              </span>
             </h3>
             <p className="text-slate-400 text-lg leading-relaxed mb-8 max-w-xl">
               In a digital-first economy, your website is often the only thing
