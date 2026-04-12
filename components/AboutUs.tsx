@@ -3,6 +3,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link"; // For navigation
 import ContactForm from "./ContactForm";
 
 const AboutUs = () => {
@@ -14,97 +15,101 @@ const AboutUs = () => {
       className="relative py-24 lg:py-32 overflow-hidden bg-white"
     >
       {/* Dynamic Background Elements */}
-      <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[600px] h-[600px] bg-[#87CEEB]/10 rounded-full blur-[120px] -z-10" />
-      <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[400px] h-[400px] bg-slate-100 rounded-full blur-[100px] -z-10" />
+      <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[600px] h-[600px] bg-blue-400/5 rounded-full blur-[120px] -z-10" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col xl:flex-row items-center gap-16 lg:gap-24">
-          {/* Visual Side */}
+          {/* Visual Side - Your Map Graphic */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             className="w-full xl:w-1/2 relative"
           >
-            <div className="relative z-10 rounded-3xl bg-slate-50 p-3 border border-slate-200/60 shadow-2xl">
+            <div className="relative z-10 rounded-[2.5rem] bg-slate-50 p-4 border border-slate-200/60 shadow-2xl overflow-hidden group">
               <Image
                 src="/map-team.svg"
-                alt="MidlineCode Global Reach"
+                alt="MidlineCode Global Infrastructure"
                 width={600}
                 height={600}
-                className="w-full h-auto rounded-2xl"
+                className="w-full h-auto rounded-[2rem] group-hover:scale-105 transition-transform duration-1000"
                 priority
               />
+              {/* Subtle glass overlay on map */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-400/10 to-transparent pointer-events-none" />
             </div>
 
-            <div className="absolute -bottom-10 -right-4 lg:right-10 z-20 bg-white/80 backdrop-blur-xl p-6 rounded-2xl border border-white shadow-xl max-w-[240px] hidden md:block">
-              <p className="text-[#87CEEB] font-bold text-3xl mb-1">Global</p>
-              <p className="text-slate-600 text-sm font-medium leading-tight">
-                Delivering high-performance digital solutions across the U.S.
-                and Europe.
+            {/* Floating Stat - Highlighting National Scale */}
+            <div className="absolute -bottom-6 -right-4 lg:right-6 z-20 bg-white/90 backdrop-blur-xl p-6 rounded-3xl border border-slate-100 shadow-2xl max-w-[260px] hidden md:block">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
+                </span>
+                <p className="text-blue-500 font-black text-xs uppercase tracking-widest">
+                  Live Presence
+                </p>
+              </div>
+              <p className="text-slate-900 text-sm font-semibold leading-snug">
+                Engineering custom solutions for clients across{" "}
+                <span className="text-blue-500">12+ States</span> and the EU.
               </p>
             </div>
-
-            <div className="absolute -top-6 -left-6 h-32 w-32 border-t-4 border-l-4 border-[#87CEEB]/30 rounded-tl-3xl -z-10" />
           </motion.div>
 
           {/* Text Side */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             className="w-full xl:w-1/2 flex flex-col gap-8"
           >
             <div className="space-y-4">
-              <span className="text-[#87CEEB] font-bold tracking-widest uppercase text-sm mb-4">
+              <h2 className="text-blue-400 font-bold tracking-widest uppercase text-sm">
                 Our Mission
-              </span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.1]">
-                Custom Code. <br />{" "}
-                <span className="text-[#87CEEB]">Measurable Results.</span>
               </h2>
+              <h3 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.1]">
+                Bridging Tech <br />
+                <span className="text-blue-400">& Business.</span>
+              </h3>
             </div>
 
             <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
               <p>
-                From our roots in{" "}
-                <span className="font-semibold text-slate-900 underline decoration-[#87CEEB] decoration-2 underline-offset-4">
-                  Fayetteville, North Carolina
+                Headquartered in{" "}
+                <span className="text-slate-900 font-semibold">
+                  North Carolina
                 </span>
-                , MidlineCode has grown into a versatile digital powerhouse. We{" "}
-                {"don't"} just install templates; we architect the technical
-                engines that power modern brands.
+                , MidlineCode is a specialized agency dedicated to building
+                high-performance digital infrastructure.
               </p>
 
-              <p>
-                Our philosophy is simple:{" "}
-                <span className="font-bold text-slate-900">
-                  Precision in Code, Excellence in Design.
-                </span>{" "}
-                We move beyond standard limitations to provide{" "}
-                <span className="text-slate-900 font-medium">
-                  custom-coded solutions
-                </span>{" "}
-                that offer superior speed, security, and scalability for
-                businesses that refuse to settle for average.
+              <p className="text-base">
+                We replace standard templates with{" "}
+                <span className="text-slate-900 font-bold italic">
+                  bespoke code
+                </span>
+                . Whether you are a local contractor or a national startup, our
+                engines are built for one thing:{" "}
+                <b className="font-semibold text-slate-900">speed</b>.
               </p>
 
-              {/* Enhanced Pill Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
+              {/* Refined Pill Grid - Optimized for keywords */}
+              <div className="grid grid-cols-2 gap-3 pt-4">
                 {[
-                  "Fayetteville Local Presence",
-                  "Performance-Driven Coding",
-                  "Custom-Coded Architectures",
-                  "Strategic UX Design",
+                  "NC Based, National Reach",
+                  "Full-Stack Engineering",
+                  "Next.js Architecture",
+                  "Conversion-First Design",
                 ].map((item) => (
                   <div
                     key={item}
-                    className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100 group hover:border-[#87CEEB]/30 transition-colors"
+                    className="flex items-center gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-100"
                   >
-                    <div className="w-2 h-2 rounded-full bg-[#87CEEB] shadow-[0_0_8px_rgba(135,206,235,0.8)]" />
-                    <span className="text-xs font-bold text-slate-700 uppercase tracking-wide group-hover:text-slate-900 transition-colors">
+                    <div className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                    <span className="text-[10px] font-black text-slate-500 uppercase tracking-tighter">
                       {item}
                     </span>
                   </div>
@@ -112,19 +117,24 @@ const AboutUs = () => {
               </div>
             </div>
 
-            <div className="pt-6">
+            <div className="pt-6 flex flex-col sm:flex-row gap-4">
               <button
                 onClick={() => setIsFormOpen(true)}
-                className="inline-block px-10 py-4 bg-slate-900 text-white font-bold rounded-xl transition-all hover:bg-[#87CEEB] hover:scale-105 hover:shadow-xl hover:shadow-[#87CEEB]/20 text-center cursor-pointer"
+                className="px-10 py-4 bg-slate-900 text-white font-bold rounded-2xl transition-all hover:bg-blue-500 shadow-lg shadow-slate-900/10"
               >
-                Start Your Custom Project
+                Start Your Project
               </button>
+              <Link
+                href="/about"
+                className="px-10 py-4 bg-white text-slate-900 border border-slate-200 font-bold rounded-2xl transition-all hover:bg-slate-50 text-center"
+              >
+                Our Full Story
+              </Link>
             </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Contact Form Overlay */}
       <ContactForm isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
     </section>
   );
