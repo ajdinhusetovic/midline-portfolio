@@ -125,7 +125,7 @@ const AboutUs = () => {
                 Start Your Project
               </button>
               <Link
-                href="/about"
+                href="/about-us"
                 className="px-10 py-4 bg-white text-slate-900 border border-slate-200 font-bold rounded-2xl transition-all hover:bg-slate-50 text-center"
               >
                 Our Full Story

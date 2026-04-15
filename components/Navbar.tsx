@@ -17,6 +17,7 @@ export default function Navbar() {
     { label: "Services", href: "/services" },
     { label: "Why Us?", href: "/why-us" },
     { label: "About", href: "/about-us" }, // Points to home section
+    { label: "Our Work", href: "/our-work" }, // Points to home section
     { label: "Process", href: "/#our-process" }, // Points to home section
   ];
 
