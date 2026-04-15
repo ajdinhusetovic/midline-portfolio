@@ -5,25 +5,20 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import ContactForm from "./ContactForm";
 import { HiMenu, HiX } from "react-icons/hi";
+import Link from "next/link";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  // Updated to point to actual URLs
   const navItems = [
-    { label: "About", id: "about-us" },
-    { label: "Services", id: "services" },
-    { label: "Process", id: "our-process" },
+    { label: "Services", href: "/services" },
+    { label: "Why Us?", href: "/why-us" },
+    { label: "About", href: "/about-us" }, // Points to home section
+    { label: "Process", href: "/#our-process" }, // Points to home section
   ];
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsOpen(false);
-    }
-  };
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -36,35 +31,35 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-white/80 backdrop-blur-md shadow-sm py-0"
+            ? "bg-white/80 backdrop-blur-md shadow-sm"
             : "bg-transparent py-6"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           {/* Logo */}
-          <div className="cursor-pointer" onClick={() => window.scrollTo(0, 0)}>
+          <Link href="/" className="cursor-pointer">
             <Image
               src="/1.svg"
               width={120}
               height={40}
               alt="MidlineCode Logo"
             />
-          </div>
+          </Link>
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-8">
             {navItems.map((item) => (
-              <button
+              <Link
                 key={item.label}
-                onClick={() => scrollToSection(item.id)}
-                className="text-slate-700 hover:text-[#87CEEB] font-medium transition-colors hover:cursor-pointer"
+                href={item.href}
+                className="text-slate-700 hover:text-blue-400 font-medium transition-colors cursor-pointer"
               >
                 {item.label}
-              </button>
+              </Link>
             ))}
             <button
               onClick={() => setIsFormOpen(true)}
-              className="px-6 py-2.5 hover:cursor-pointer bg-slate-900 text-white font-bold rounded-lg hover:bg-[#87CEEB] transition-all"
+              className="px-6 py-2.5 cursor-pointer bg-slate-900 text-white font-bold rounded-lg hover:bg-blue-400 transition-all"
             >
               Contact Us
             </button>
@@ -72,7 +67,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Trigger */}
           <button
-            className="lg:hidden text-slate-900 text-3xl"
+            className="lg:hidden text-slate-900 text-3xl cursor-pointer"
             onClick={() => setIsOpen(true)}
           >
             <HiMenu />
@@ -92,27 +87,28 @@ export default function Navbar() {
             <div className="flex justify-end mb-12">
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-4xl text-slate-900"
+                className="text-4xl text-slate-900 cursor-pointer"
               >
                 <HiX />
               </button>
             </div>
             <div className="flex flex-col gap-8 text-center">
               {navItems.map((item) => (
-                <button
+                <Link
                   key={item.label}
-                  onClick={() => scrollToSection(item.id)}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
                   className="text-2xl font-bold text-slate-900"
                 >
                   {item.label}
-                </button>
+                </Link>
               ))}
               <button
                 onClick={() => {
                   setIsOpen(false);
                   setIsFormOpen(true);
                 }}
-                className="px-8 py-4 bg-[#87CEEB] text-slate-900 font-bold rounded-xl hover:cursor-pointer"
+                className="px-8 py-4 bg-blue-400 text-slate-900 font-bold rounded-xl cursor-pointer"
               >
                 Contact Us
               </button>
