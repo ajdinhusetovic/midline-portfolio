@@ -1,115 +1,72 @@
-"use client";
-
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import ContactForm from "./ContactForm";
-
-const processSteps = [
+import Link from "next/link";
+const steps = [
   {
-    number: "01",
-    title: "Discovery & Strategy",
-    text: "We deep dive into your business goals. By identifying your unique pain points and target audience, we define the roadmap for a high-performance digital solution.",
+    title: "Agree on the scope",
+    text: "We discuss your business, pages, and features, then confirm the quote and what is included.",
   },
   {
-    number: "02",
-    title: "Architecture & Design",
-    text: "Before writing code, we map out the user experience. We create wireframes and UI systems that prioritize conversion, accessibility, and brand consistency.",
+    title: "Gather content & design",
+    text: "You provide the required text, photos, and business details. We shape the layout around your services.",
   },
   {
-    number: "03",
-    title: "Custom Development",
-    text: "This is where we build. Using modern stacks like Next.js and Tailwind, we craft bespoke code optimized for speed, SEO, and long-term scalability.",
+    title: "Build & review",
+    text: "We develop the responsive website and work through two revision rounds within the agreed scope.",
   },
   {
-    number: "04",
-    title: "Launch & Optimization",
-    text: "Deployment is just the start. We conduct final quality assurance, performance testing, and provide ongoing support to ensure your growth is continuous.",
+    title: "Check & launch",
+    text: "We check the main pages and contact form, help with the domain and deployment, and discuss any ongoing support you need.",
   },
 ];
-
-const OurProcess = () => {
-  const [isFormOpen, setIsFormOpen] = useState(false);
-
+export default function OurProcess() {
   return (
-    <section
-      id="our-process"
-      className="py-24 bg-white relative overflow-hidden"
-    >
-      {/* Subtle background accent */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-blue-400/5 blur-[120px] rounded-full -z-10" />
-
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <h2 className="text-blue-400 font-bold tracking-[0.2em] uppercase text-xs mb-4">
-            Our Method
+    <section id="our-process" className="scroll-mt-28 py-16 md:py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <p className="text-blue-700 text-sm uppercase tracking-widest font-bold mb-4">
+            Our process
+          </p>
+          <h2 className="text-3xl md:text-5xl font-bold text-slate-900">
+            Simple steps. Clear expectations.
           </h2>
-          <h3 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight">
-            Transparent, Focused, <br /> and Results-Driven.
-          </h3>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            We’ve eliminated agency bloat to focus on what matters: building
-            technical engines that deliver real value to your brand.
+          <p className="mt-5 text-lg text-slate-600">
+            Approximately 7–10 business days after receiving all required client
+            content. We confirm timing for your scope before starting.
           </p>
         </div>
-
-        {/* Process Steps Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10">
-          {processSteps.map((step, index) => (
-            <motion.div
+        <div className="grid md:grid-cols-2 gap-6">
+          {steps.map((step, index) => (
+            <div
               key={step.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: index * 0.1,
-                duration: 0.6,
-                ease: "easeOut",
-              }}
-              viewport={{ once: true }}
-              className="relative p-8 md:p-12 rounded-[2rem] bg-slate-50 border border-slate-100 hover:bg-white hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-500/5 transition-all duration-500 group"
+              className="p-6 md:p-10 rounded-[2rem] bg-slate-50 border border-slate-100"
             >
-              {/* Numbering with "Tech" styling */}
-              <div className="flex items-center gap-4 mb-6">
-                <span className="text-blue-400 font-black text-4xl tracking-tighter transition-transform group-hover:scale-110 duration-500">
-                  {step.number}
-                </span>
-                <div className="h-[2px] w-8 bg-blue-100 group-hover:w-16 group-hover:bg-blue-400 transition-all duration-500" />
-              </div>
-
-              <h4 className="text-2xl font-bold text-slate-900 mb-4">
+              <span
+                aria-hidden="true"
+                className="text-blue-700 text-3xl font-bold"
+              >
+                0{index + 1}
+              </span>
+              <h3 className="mt-4 mb-3 text-2xl font-bold text-slate-900">
                 {step.title}
-              </h4>
-              <p className="text-slate-600 leading-relaxed text-base font-medium">
-                {step.text}
-              </p>
-            </motion.div>
+              </h3>
+              <p className="text-slate-600 leading-relaxed">{step.text}</p>
+            </div>
           ))}
         </div>
-
-        {/* CTA Section */}
-        <div className="mt-24 text-center">
-          <div className="bg-slate-50 border border-slate-100 p-12 rounded-[3rem] max-w-4xl mx-auto shadow-sm">
-            <h4 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
-              Have a complex problem? <br className="hidden md:block" /> Let’s
-              architect a solution.
-            </h4>
-            <p className="text-slate-500 mb-8 max-w-md mx-auto">
-              Whether you need a full-stack app or a high-converting site, we’re
-              ready to build.
-            </p>
-            <button
-              onClick={() => setIsFormOpen(true)}
-              className="px-12 py-5 bg-slate-900 text-white font-bold rounded-2xl hover:bg-blue-500 transition-all hover:scale-105 active:scale-95 shadow-xl shadow-slate-900/10"
-            >
-              Launch Your Project
-            </button>
-          </div>
+        <div className="mt-12 text-center rounded-[2rem] bg-slate-900 p-6 md:p-12 text-white">
+          <h3 className="text-2xl md:text-3xl font-bold">
+            Ready for a website that fits your business?
+          </h3>
+          <p className="mt-4 text-slate-300">
+            Tell us what you need. We will confirm the scope and price.
+          </p>
+          <Link
+            href="/contact"
+            className="mt-6 inline-flex rounded-xl bg-blue-700 hover:bg-blue-800 px-8 py-3 font-bold"
+          >
+            Request a quote
+          </Link>
         </div>
       </div>
-
-      <ContactForm isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
     </section>
   );
-};
-
-export default OurProcess;
+}

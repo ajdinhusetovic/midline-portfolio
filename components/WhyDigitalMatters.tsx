@@ -1,118 +1,73 @@
-"use client";
-
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import Link from "next/link";
 import { FiTrendingUp, FiShield, FiZap, FiTarget } from "react-icons/fi";
-import ContactForm from "./ContactForm"; // Import your contact form
-
-const stats = [
+const benefits = [
   {
-    icon: <FiZap className="text-blue-400" size={28} />,
-    title: "Performance is Profit",
+    icon: FiZap,
+    title: "Easy to use",
     description:
-      "Every 100ms of latency costs 1% in sales. We architect for sub-second speeds using Next.js to ensure you never lose a lead to a slow loader.",
+      "Responsive layouts and optimized assets help visitors explore your services on phones and computers.",
   },
   {
-    icon: <FiTarget className="text-blue-400" size={28} />,
-    title: "SEO-First Engineering",
+    icon: FiTarget,
+    title: "Clear next steps",
     description:
-      "A website is your 24/7 salesperson. Our custom code is semantically built so Google can crawl, index, and rank your business higher than the competition.",
+      "Visible contact details and quote forms give interested visitors a straightforward way to reach you.",
   },
   {
-    icon: <FiShield className="text-blue-400" size={28} />,
-    title: "Trust & Credibility",
+    icon: FiShield,
+    title: "A professional presence",
     description:
-      "75% of consumers judge a company's credibility by its website design. We provide the 'Big Agency' look at a fraction of the cost.",
+      "Consistent design and clear service information help customers understand who you are and what you do.",
   },
   {
-    icon: <FiTrendingUp className="text-blue-400" size={28} />,
-    title: "Future-Proof Growth",
+    icon: FiTrendingUp,
+    title: "Search-ready foundations",
     description:
-      "Templates break. Our bespoke code scales. Whether you're adding a booking system or a client portal, your foundation is built to expand.",
+      "Basic technical SEO includes descriptive metadata, semantic pages, and crawlable site structure.",
   },
 ];
-
-const WhyDigitalMatters = () => {
-  const [isFormOpen, setIsFormOpen] = useState(false);
-
+export default function WhyDigitalMatters() {
   return (
-    <>
-      <section className="py-24 bg-slate-900 text-white relative overflow-hidden">
-        {/* Decorative background blur */}
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-500/10 blur-[120px] rounded-full" />
-
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Text Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-blue-400 font-bold tracking-[0.2em] uppercase text-xs mb-4">
-                The Digital Reality
-              </h2>
-              <h3 className="text-4xl md:text-5xl font-extrabold mb-8 leading-tight tracking-tight">
-                A website isn&apos;t an expense. <br />
-                <span className="text-blue-400 italic">
-                  It&apos;s an investment.
-                </span>
-              </h3>
-              <p className="text-slate-400 text-lg leading-relaxed mb-8 max-w-xl">
-                In a digital-first economy, your website is often the only thing
-                standing between a potential client and a competitor. We build
-                the tools that make the choice obvious.
-              </p>
-
-              {/* CTA to open the form */}
-              <div className="flex flex-wrap items-center gap-6">
-                <button
-                  onClick={() => setIsFormOpen(true)}
-                  className="px-8 py-4 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-2xl transition-all cursor-pointer shadow-lg shadow-blue-500/10"
-                >
-                  Get a Strategy Call
-                </button>
-                <a
-                  href="/why-us"
-                  className="text-sm font-bold border-b-2 border-blue-400/30 hover:border-blue-400 transition-all pb-1 cursor-pointer"
-                >
-                  Read the Case for Custom Code
-                </a>
-              </div>
-            </motion.div>
-
-            {/* Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-              {stats.map((item, index) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  viewport={{ once: true }}
-                  className="p-8 rounded-[2.5rem] bg-white/5 border border-white/10 hover:border-blue-400/50 hover:bg-white/[0.08] transition-all group cursor-default"
-                >
-                  <div className="mb-4 group-hover:scale-110 transition-transform duration-500">
-                    {item.icon}
-                  </div>
-                  <h4 className="text-xl font-bold mb-3 text-white">
-                    {item.title}
-                  </h4>
-                  <p className="text-slate-400 text-sm leading-relaxed">
-                    {item.description}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+    <section className="py-16 md:py-24 bg-slate-900 text-white">
+      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div>
+          <p className="text-blue-300 uppercase tracking-widest text-sm font-bold mb-4">
+            Practical benefits
+          </p>
+          <h2 className="text-3xl md:text-5xl font-bold">
+            Make a good first impression.
+            <br />
+            <span className="text-blue-300">Make contacting you simple.</span>
+          </h2>
+          <p className="mt-6 text-slate-300 text-lg">
+            Your website should explain your services, answer common questions,
+            and help customers take the next step.
+          </p>
+          <Link
+            href="/why-us"
+            className="mt-7 inline-flex py-3 font-bold text-blue-300 underline underline-offset-4"
+          >
+            Why work with Midline Code →
+          </Link>
         </div>
-      </section>
-
-      {/* Contact Form Instance */}
-      <ContactForm isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
-    </>
+        <div className="grid sm:grid-cols-2 gap-5">
+          {benefits.map(({ icon: Icon, title, description }) => (
+            <div
+              key={title}
+              className="p-6 md:p-8 rounded-[2rem] bg-white/5 border border-white/10"
+            >
+              <Icon
+                aria-hidden="true"
+                className="text-blue-300 text-3xl mb-4"
+              />
+              <h3 className="text-xl font-bold mb-3">{title}</h3>
+              <p className="text-slate-300 text-sm leading-relaxed">
+                {description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
-};
-
-export default WhyDigitalMatters;
+}

@@ -1,58 +1,39 @@
 import type { Metadata } from "next";
-import {
-  Geist,
-  Geist_Mono,
-  Lato,
-  Work_Sans,
-  Montserrat,
-  Rubik,
-} from "next/font/google";
+import { Rubik } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import { Toaster } from "@/components/ui/sonner";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+import Footer from "@/components/Footer";
+import { pageMetadata, siteUrl } from "@/lib/metadata";
+const rubik = Rubik({
   subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
 });
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const lato = Lato({ subsets: ["latin"], weight: ["400", "700"] });
-const workSans = Work_Sans({ subsets: ["latin"], weight: ["400", "700"] });
-const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "700"] });
-const rubik = Rubik({ subsets: ["latin"], weight: ["400", "700"] });
-
 export const metadata: Metadata = {
-  title: "Midline Code",
-  description: "Web Development Agency",
+  ...pageMetadata(
+    "North Carolina Web Developer",
+    "Web design and development for small businesses in North Carolina, including Fayetteville and Charlotte. Professional business websites starting at $999 USD.",
+    "/",
+  ),
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "North Carolina Web Developer | Midline Code",
+    template: "%s | Midline Code",
+  },
+  icons: { icon: "/2.svg" },
 };
-
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <link rel="icon" href="/2.svg" />
-      <body
-        className={`${rubik.className} antialiased h-full w-full bg-cover bg-center overflow-x-hidden`}
-        // style={{
-        //   backgroundImage:
-        //     "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/background.jpg')",
-        //   backgroundRepeat: "no-repeat",
-        //   backgroundSize: "cover", // still good, but tweak position
-        //   backgroundPosition: "right center", // ensure the main part of image stays visible
-        //   backgroundAttachment: "scroll",
-        // }}
-      >
+      <body className={`${rubik.className} antialiased`}>
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <Navbar />
-        <Toaster />
         {children}
+        <Footer />
       </body>
     </html>
   );

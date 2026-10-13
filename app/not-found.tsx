@@ -1,26 +1,28 @@
-"use client";
-
-import { useRouter } from "next/navigation";
-import React from "react";
-
-const NotFound = () => {
-  const router = useRouter();
+import Link from "next/link";
+export default function NotFound() {
   return (
-    <section className="h-screen flex items-center justify-center text-white">
-      <div className="flex flex-col items-center">
-        <h1 className="text-4xl flex flex-col lg:flex-row lg:w-full w-[90%] text-center lg:gap-2 items-center">
-          <span className="text-6xl text-blue-400">404</span> This page doesn
-          {"'"}t exist
+    <main
+      id="main-content"
+      tabIndex={-1}
+      className="page-shell min-h-[70svh] flex items-center justify-center px-6 text-center"
+    >
+      <div>
+        <p className="text-6xl text-blue-700 font-bold">404</p>
+        <h1 className="mt-5 text-3xl font-bold text-slate-900">
+          This page doesn’t exist.
         </h1>
-        <button
-          onClick={() => router.push("/")}
-          className="w-[50%] lg:w-[30%] rounded-4xl text-lg font-semibold cursor-pointer hover:shadow-[0_0_20px_rgba(59,130,246,0.7)] transition-all duration-300 bg-white/5 backdrop-blur-sm p-3 mt-8 mx-auto "
-        >
-          Go Back
-        </button>
+        <p className="mt-4 text-slate-600">
+          Return to the homepage or get in touch about your website.
+        </p>
+        <div className="mt-7 flex flex-wrap justify-center gap-4">
+          <Link href="/" className="primary-link">
+            Go to homepage
+          </Link>
+          <Link href="/contact" className="secondary-link">
+            Contact us
+          </Link>
+        </div>
       </div>
-    </section>
+    </main>
   );
-};
-
-export default NotFound;
+}

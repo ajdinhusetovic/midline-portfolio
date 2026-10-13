@@ -31,7 +31,7 @@ export function EmailTemplate({
           boxShadow: "0 0 10px rgba(0,0,0,0.1)",
         }}
       >
-        <h2 style={{ color: "#0070f3" }}>New Client Inquiry</h2>
+        <h2 style={{ color: "#0070f3" }}>New Website Inquiry</h2>
         <p>You have received a new message from your website contact form:</p>
 
         <table
@@ -68,7 +68,7 @@ export function EmailTemplate({
         <hr style={{ margin: "20px 0", borderColor: "#eee" }} />
 
         <p style={{ fontSize: "12px", color: "#999" }}>
-          MidlineCode – Professional Web Development Agency
+          Midline Code – Small-business websites
         </p>
       </div>
     </div>

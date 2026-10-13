@@ -1,138 +1,132 @@
-"use client";
-import React from "react";
-import { motion } from "framer-motion";
-import { FiLayout, FiCode, FiSearch, FiServer, FiEdit3 } from "react-icons/fi";
-
-// Add FiEdit3 to your react-icons/fi imports
-
-const services = [
-  {
-    icon: <FiLayout className="text-blue-400" />,
-    title: "High-End Business Websites",
-    description:
-      "Designed for authority and trust. We build multi-page sites (MPA) that tell your brand's story while serving as a lead-generation machine.",
-    details: [
-      "Custom UI/UX Design",
-      "Next.js Speed Optimization",
-      "Mobile-First Layouts",
-      "SEO-Ready Architecture",
-    ],
-  },
-  {
-    icon: <FiCode className="text-blue-400" />,
-    title: "Interactive Web Features", // Changed from "Custom Web Applications"
-    description:
-      "When a static site isn't enough. We integrate custom functionality like booking systems, client portals, and dynamic dashboards to automate your workflow.",
-    details: [
-      "Secure User Authentication",
-      "Real-time Database Integration",
-      "Custom Booking Flow Logic", // Specific to what you're building
-      "Scalable Infrastructure",
-    ],
-  },
-  {
-    icon: <FiEdit3 className="text-blue-400" />,
-    title: "Brand & Graphic Design",
-    description:
-      "Visual identity is the soul of your business. We craft modern logos, color palettes, and brand guidelines that stand out in a crowded market.",
-    details: [
-      "Logo Design & Visual Identity",
-      "Brand Style Guides",
-      "Marketing Collateral",
-      "UI/UX Prototyping",
-    ],
-  },
-  {
-    icon: <FiServer className="text-blue-400" />,
-    title: "Managed Support & Hosting",
-    description:
-      "The 'Engine Room' of your digital presence. We take the technical stress off your plate so you can focus on your business.",
-    details: [
-      "Secure Vercel Hosting",
-      "SSL Management",
-      "Monthly Security Updates",
-      "Priority Technical Support",
-    ],
-  },
-];
-
-const ServicesPage = () => {
+import Link from "next/link";
+import BusinessOffer from "@/components/BusinessOffer";
+import StructuredData from "@/components/StructuredData";
+import { websiteServiceSchema } from "@/lib/structured-data";
+import { pageMetadata } from "@/lib/metadata";
+export const metadata = pageMetadata(
+  "Small Business Web Design in North Carolina",
+  "Small-business web design for Fayetteville, Charlotte, and North Carolina. Websites from $999 USD with responsive pages, a contact form, and launch assistance.",
+  "/services",
+);
+export default function ServicesPage() {
   return (
-    <main className="pt-32 pb-24 bg-white mt-22">
+    <main id="main-content" tabIndex={-1} className="page-shell">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Header Area */}
-        <div className="max-w-3xl mb-20">
-          <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 mb-8 tracking-tighter">
-            Digital Solutions <br />
-            <span className="text-blue-400">Built to Scale.</span>
+        <div className="max-w-3xl mb-10">
+          <p className="eyebrow">Web design & development</p>
+          <h1 className="page-title">
+            Small-business web design.
+            <br />
+            <span className="text-blue-700">
+              Built for North Carolina & US businesses.
+            </span>
           </h1>
-          <p className="text-xl text-slate-600 leading-relaxed">
-            We bridge the gap between high-end design and elite engineering.
-            From simple landing pages to complex web ecosystems, we build the
-            tools that define your digital authority.
+          <p className="mt-6 text-lg md:text-xl text-slate-600">
+            For small and service-based businesses in North Carolina and across
+            the US, including Fayetteville and Charlotte. Present your services,
+            answer customer questions, and make contacting you straightforward.
           </p>
         </div>
-
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="p-10 md:p-14 rounded-[3rem] bg-slate-50 border border-slate-100 hover:border-blue-200 transition-all group"
-            >
-              <div className="text-4xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                {service.icon}
-              </div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-4">
-                {service.title}
-              </h2>
-              <p className="text-slate-600 mb-8 leading-relaxed">
-                {service.description}
+        <BusinessOffer />
+        <StructuredData data={websiteServiceSchema} />
+        <section
+          id="ongoing-support"
+          className="scroll-mt-28 mt-10 rounded-[2rem] bg-slate-900 p-6 md:p-12 text-white"
+        >
+          <h2 className="text-2xl md:text-3xl font-bold">
+            Support after launch
+          </h2>
+          <p className="mt-4 text-slate-300 max-w-3xl leading-relaxed">
+            If you need ongoing hosting, maintenance, backups, or small content
+            updates, we can discuss a separate monthly arrangement.
+            Availability, coverage, and fees are confirmed in your quote.
+          </p>
+          <Link
+            href="/contact"
+            className="mt-6 inline-flex text-blue-300 font-bold underline underline-offset-4"
+          >
+            Ask about ongoing support →
+          </Link>
+        </section>
+        <section className="mt-12 max-w-3xl">
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+            Small-business website questions
+          </h2>
+          <div className="mt-6 space-y-6 text-slate-600">
+            <div>
+              <h3 className="font-bold text-slate-900 mb-2">
+                How much does a small-business website cost?
+              </h3>
+              <p>
+                Our Business Website package starts at $999 USD for up to five
+                pages. Final pricing depends on the agreed scope. Additional
+                pages, custom functionality, copywriting, and third-party
+                services may cost extra.
               </p>
-
-              <ul className="space-y-3">
-                {service.details.map((detail) => (
-                  <li
-                    key={detail}
-                    className="flex items-center gap-3 text-slate-900 font-semibold text-sm"
-                  >
-                    <div className="w-1.5 h-1.5 bg-blue-400 rounded-full" />
-                    {detail}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* The "Choice" CTA Section */}
-        <div className="mt-24 bg-slate-900 rounded-[4rem] p-12 md:p-20 text-center relative overflow-hidden">
-          {/* Subtle background glow */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 blur-[100px] rounded-full" />
-
-          <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Not sure which solution fits?
-          </h3>
-          <p className="text-slate-400 mb-10 max-w-xl mx-auto">
-            Every business is different. We offer custom quotes and flexible
-            partnership models to ensure you get exactly what you need.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-10 py-4 bg-blue-500 text-white font-bold rounded-2xl hover:bg-blue-600 transition-all">
-              Book a Strategy Call
-            </button>
-            <button className="px-10 py-4 border border-white/20 text-white font-bold rounded-2xl hover:bg-white/5 transition-all">
-              View Our Work
-            </button>
+            </div>
+            <div>
+              <h3 className="font-bold text-slate-900 mb-2">
+                Do you serve Fayetteville and Charlotte businesses?
+              </h3>
+              <p>
+                Yes. We provide web design and development for small businesses
+                in Fayetteville, Charlotte, and across North Carolina, as well
+                as other US businesses. North Carolina is our base for local
+                communication and coordination. Any in-person needs are agreed
+                upon for your project.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold text-slate-900 mb-2">
+                How long does a business website take?
+              </h3>
+              <p>
+                Approximately 7–10 business days after receiving all required
+                client content for the starter scope. We confirm timing before
+                work begins; additional features and delayed content can change
+                the schedule.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold text-slate-900 mb-2">
+                What content do you need?
+              </h3>
+              <p>
+                Your service descriptions, business details, logo if available,
+                and approved photos. Copywriting is outside the starter scope
+                unless included in your quote.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold text-slate-900 mb-2">
+                What does basic technical SEO include?
+              </h3>
+              <p>
+                Page titles and descriptions, semantic structure, and sitemap
+                and robots configuration. Search rankings and business results
+                are not guaranteed.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold text-slate-900 mb-2">
+                What if I need more?
+              </h3>
+              <p>
+                Additional pages and custom functionality are quoted separately.
+                We confirm what is included before starting.
+              </p>
+            </div>
           </div>
-        </div>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Link href="/contact" className="primary-link">
+              Request a quote
+            </Link>
+            <Link href="/our-work" className="secondary-link">
+              View our work
+            </Link>
+          </div>
+        </section>
       </div>
     </main>
   );
-};
-
-export default ServicesPage;
+}

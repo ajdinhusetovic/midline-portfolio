@@ -1,168 +1,212 @@
 "use client";
+import { useRef, useState } from "react";
+import Link from "next/link";
+import {
+  contactLimits,
+  validateContact,
+  type ContactErrors,
+} from "@/lib/contact-validation";
 
-import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { toast } from "sonner";
-import { Spinner } from "./ui/spinner";
-import { HiX } from "react-icons/hi";
-
-interface ContactFormProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
-  const [formData, setFormData] = useState({
+export default function ContactForm() {
+  const [values, setValues] = useState({
     name: "",
     email: "",
     message: "",
+    website: "",
   });
-  const [isSending, setIsSending] = useState(false);
-  const panelRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
-      if (panelRef.current && !panelRef.current.contains(e.target as Node)) {
-        onClose();
-      }
-    }
-    if (isOpen) document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [isOpen, onClose]);
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  const [errors, setErrors] = useState<ContactErrors>({});
+  const [sending, setSending] = useState(false);
+  const [feedback, setFeedback] = useState("");
+  const [success, setSuccess] = useState(false);
+  const statusRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+  const busyRef = useRef(false);
+  const onChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setValues((current) => ({
+      ...current,
+      [event.target.name]: event.target.value,
+    }));
+    setErrors((current) => ({ ...current, [event.target.name]: undefined }));
   };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (isSending) return;
-    setIsSending(true);
-
+  async function submit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (busyRef.current) return;
+    const result = validateContact(values);
+    setErrors(result.errors);
+    setFeedback("");
+    setSuccess(false);
+    const firstError = Object.keys(result.errors)[0];
+    if (firstError) {
+      const field = formRef.current?.querySelector<HTMLElement>(
+        `[name="${firstError}"]`,
+      );
+      field?.focus({ preventScroll: true });
+      field?.scrollIntoView({ block: "center", behavior: "instant" });
+      return;
+    }
+    busyRef.current = true;
+    setSending(true);
     try {
-      const res = await fetch("/api/send", {
+      const response = await fetch("/api/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(values),
       });
-
-      if (res.ok) {
-        toast.success("Your email has been sent successfully", {
-          style: {
-            "--normal-bg": "var(--color-green-600)",
-            "--normal-text": "var(--color-white)",
-            "--normal-border": "transparent",
-          } as React.CSSProperties,
-        });
-        setFormData({ name: "", email: "", message: "" });
-        onClose();
-      } else {
-        throw new Error("Failed to send");
-      }
-    } catch (err) {
-      toast("Error sending email. Try again later!", {
-        style: {
-          "--normal-bg": "var(--destructive)",
-          "--normal-text": "var(--color-white)",
-          "--normal-border": "transparent",
-        } as React.CSSProperties,
-      });
-      console.error(err);
+      if (!response.ok) throw new Error("Unable to send");
+      setSuccess(true);
+      setFeedback(
+        "Thanks — your inquiry has been sent. We will review your project details and reply by email.",
+      );
+      setValues({ name: "", email: "", message: "", website: "" });
+    } catch {
+      setFeedback(
+        "We couldn’t send your inquiry. Please try again, or email contact@midlinecode.com directly. Your details are still in the form.",
+      );
     } finally {
-      setIsSending(false);
+      busyRef.current = false;
+      setSending(false);
+      requestAnimationFrame(() => {
+        statusRef.current?.focus({ preventScroll: true });
+        statusRef.current?.scrollIntoView({ block: "center", behavior: "instant" });
+      });
     }
-  };
-
+  }
+  const fieldClass =
+    "w-full bg-white border border-slate-300 p-3 rounded-xl text-slate-900 focus:border-blue-700";
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[99]"
-          />
-          <motion.div
-            ref={panelRef}
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed top-0 right-0 w-full xl:w-[45%] h-screen bg-white z-[100] p-8 md:p-12 shadow-2xl flex flex-col overflow-y-auto"
-          >
-            <button
-              onClick={onClose}
-              className="absolute top-8 right-8 text-slate-400 hover:text-slate-900 text-3xl transition"
-            >
-              <HiX />
-            </button>
-
-            <h2 className="text-4xl font-extrabold text-slate-900 mb-2">
-              {"Let's"} build.
-            </h2>
-            <p className="text-slate-500 mb-10">
-              Tell us about your project and {"we'll"} get back to you shortly.
-            </p>
-
-            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-              <div className="flex flex-col gap-2">
-                <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full bg-slate-50 border border-slate-200 p-4 rounded-xl focus:border-[#87CEEB] focus:ring-1 focus:ring-[#87CEEB] outline-none transition"
-                />
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full bg-slate-50 border border-slate-200 p-4 rounded-xl focus:border-[#87CEEB] focus:ring-1 focus:ring-[#87CEEB] outline-none transition"
-                />
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">
-                  Message
-                </label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={6}
-                  required
-                  className="w-full bg-slate-50 border border-slate-200 p-4 rounded-xl focus:border-[#87CEEB] focus:ring-1 focus:ring-[#87CEEB] outline-none transition resize-none"
-                />
-              </div>
-
-              <motion.button
-                type="submit"
-                disabled={isSending}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full bg-slate-900 text-white font-bold py-4 rounded-xl hover:bg-[#87CEEB] transition-all flex items-center justify-center gap-2"
-              >
-                {isSending ? <Spinner /> : "Send Message"}
-              </motion.button>
-            </form>
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
+    <form
+      ref={formRef}
+      onSubmit={submit}
+      noValidate
+      aria-busy={sending}
+      className="rounded-[2rem] border border-slate-200 bg-slate-50 p-6 md:p-10 space-y-6"
+    >
+      <div>
+        <label
+          htmlFor="contact-name"
+          className="block text-slate-900 font-bold mb-2"
+        >
+          Name <span className="font-normal text-sm">(required)</span>
+        </label>
+        <input
+          id="contact-name"
+          name="name"
+          autoComplete="name"
+          required
+          maxLength={contactLimits.name}
+          value={values.name}
+          onChange={onChange}
+          aria-invalid={!!errors.name}
+          aria-describedby={errors.name ? "name-error" : undefined}
+          className={fieldClass}
+        />
+        {errors.name && (
+          <p id="name-error" className="mt-2 text-sm text-red-700">
+            {errors.name}
+          </p>
+        )}
+      </div>
+      <div>
+        <label
+          htmlFor="contact-email"
+          className="block text-slate-900 font-bold mb-2"
+        >
+          Email <span className="font-normal text-sm">(required)</span>
+        </label>
+        <input
+          id="contact-email"
+          name="email"
+          type="email"
+          autoComplete="email"
+          required
+          maxLength={contactLimits.email}
+          value={values.email}
+          onChange={onChange}
+          aria-invalid={!!errors.email}
+          aria-describedby={errors.email ? "email-error" : undefined}
+          className={fieldClass}
+        />
+        {errors.email && (
+          <p id="email-error" className="mt-2 text-sm text-red-700">
+            {errors.email}
+          </p>
+        )}
+      </div>
+      <div>
+        <label
+          htmlFor="contact-message"
+          className="block text-slate-900 font-bold mb-2"
+        >
+          What does your business need?{" "}
+          <span className="font-normal text-sm">(required)</span>
+        </label>
+        <p id="message-hint" className="mb-3 text-sm text-slate-600">
+          Tell us about your business, the pages you need, and your preferred
+          timing. Up to 5,000 characters. Please don’t include sensitive
+          information.
+        </p>
+        <textarea
+          id="contact-message"
+          name="message"
+          rows={6}
+          required
+          maxLength={contactLimits.message}
+          value={values.message}
+          onChange={onChange}
+          aria-invalid={!!errors.message}
+          aria-describedby={`message-hint${errors.message ? " message-error" : ""}`}
+          className={`${fieldClass} resize-y`}
+        />
+        {errors.message && (
+          <p id="message-error" className="mt-2 text-sm text-red-700">
+            {errors.message}
+          </p>
+        )}
+      </div>
+      <div aria-hidden="true" className="honeypot">
+        <label htmlFor="contact-website">Leave this field empty</label>
+        <input
+          id="contact-website"
+          name="website"
+          autoComplete="off"
+          tabIndex={-1}
+          value={values.website}
+          onChange={onChange}
+        />
+      </div>
+      <p className="text-sm text-slate-600">
+        We use these details to respond to your inquiry. Read our{" "}
+        <Link
+          href="/privacy"
+          className="text-blue-700 underline underline-offset-4"
+        >
+          Privacy Policy
+        </Link>
+        .
+      </p>
+      <button
+        type="submit"
+        disabled={sending}
+        className="w-full rounded-xl bg-slate-900 text-white px-7 py-4 font-bold hover:bg-blue-700 disabled:opacity-70 disabled:cursor-wait"
+      >
+        {sending ? "Sending your inquiry…" : "Request a quote"}
+      </button>
+      <div
+        ref={statusRef}
+        tabIndex={-1}
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        className={
+          feedback
+            ? `rounded-xl p-4 text-sm leading-relaxed ${success ? "bg-green-50 text-green-900 border border-green-200" : "bg-red-50 text-red-900 border border-red-200"}`
+            : "sr-only"
+        }
+      >
+        {feedback}
+      </div>
+    </form>
   );
 }
