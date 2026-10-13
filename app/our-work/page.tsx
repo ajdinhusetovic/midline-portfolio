@@ -3,14 +3,14 @@ import FeaturedWork from "@/components/FeaturedWork";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
   "Our work",
-  "Explore two frontend website projects: K&S Designs & Builds and The Chicken Brand restaurant concept.",
+  "Explore two website projects: K&S Designs & Builds and The Chicken Brand restaurant concept.",
   "/our-work",
 );
 export default function WorkPage() {
   return (
     <main id="main-content" tabIndex={-1} className="page-shell">
       <div className="max-w-7xl mx-auto px-6 mb-10">
-        <p className="eyebrow">Selected frontend projects</p>
+        <p className="eyebrow">Selected website projects</p>
         <h1 className="page-title">
           Our work.
           <br />
@@ -19,7 +19,7 @@ export default function WorkPage() {
           </span>
         </h1>
         <p className="mt-6 max-w-3xl text-lg text-slate-600">
-          Explore two completed frontend projects, from a construction and
+          Explore two completed website projects, from a construction and
           remodeling website to a restaurant concept with a bold visual style.
         </p>
       </div>

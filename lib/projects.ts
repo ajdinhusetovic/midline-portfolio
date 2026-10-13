@@ -3,9 +3,9 @@ export const projects = [
     title: "K&S Designs & Builds",
     category: "Construction & remodeling website",
     description:
-      "A frontend website project presenting construction and remodeling services with a clear visual layout.",
+      "A website project presenting construction and remodeling services with a clear visual layout.",
     tags: ["Next.js", "Tailwind CSS", "Framer Motion"],
-    image: "/ks-website.png",
+    image: "/ks-website.webp",
     link: "https://www.ksbuildsnc.com/",
     linkLabel: "Visit live website",
   },

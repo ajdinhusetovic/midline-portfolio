@@ -116,9 +116,9 @@ export default function Hero() {
               Live website
             </span>
           </div>
-          <div className="relative aspect-[16/10]">
+          <div className="relative aspect-[1440/683]">
             <Image
-              src="/ks-website.png"
+              src="/ks-website.webp"
               alt="K&S Designs & Builds construction website designed by Midline Code"
               fill
               fetchPriority="high"

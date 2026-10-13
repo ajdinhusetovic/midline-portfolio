@@ -11,13 +11,13 @@ const rubik = Rubik({
 });
 export const metadata: Metadata = {
   ...pageMetadata(
-    "North Carolina Web Developer",
+    "North Carolina Web Design for Small Businesses",
     "Web design and development for small businesses in North Carolina, including Fayetteville and Charlotte. Professional business websites starting at $999 USD.",
     "/",
   ),
   metadataBase: new URL(siteUrl),
   title: {
-    default: "North Carolina Web Developer | Midline Code",
+    default: "North Carolina Web Design for Small Businesses | Midline Code",
     template: "%s | Midline Code",
   },
   icons: { icon: "/2.svg" },

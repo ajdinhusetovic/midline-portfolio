@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
-  "About our web-development team",
-  "Meet Midline Code: a small web-development team serving North Carolina and US businesses, with North Carolina as our base for local communication.",
+  "About Midline Code",
+  "Meet Ajdin Husetovic, the developer behind Midline Code websites for small businesses in North Carolina and across the US.",
   "/about-us",
 );
 export default function AboutPage() {
@@ -10,39 +10,46 @@ export default function AboutPage() {
     <main id="main-content" tabIndex={-1} className="page-shell">
       <div className="max-w-7xl mx-auto px-6">
         <div className="max-w-3xl mb-12">
-          <p className="eyebrow">Small team. Direct communication.</p>
+          <p className="eyebrow">Meet your developer.</p>
           <h1 className="page-title">
-            A small team.
+            A personal approach.
             <br />
             <span className="text-blue-700">
               A shared focus on your business.
             </span>
           </h1>
           <p className="mt-6 text-lg md:text-xl text-slate-600 leading-relaxed">
-            Midline Code is a small web-development team serving small and
-            service-based businesses in North Carolina and across the US.
+            Midline Code builds websites for small and service-based businesses
+            in North Carolina and across the US. Meet the person responsible
+            for bringing your website to life.
           </p>
         </div>
         <section className="grid md:grid-cols-2 gap-6">
           <div className="rounded-[2rem] bg-slate-50 border border-slate-200 p-6 md:p-10">
             <h2 className="text-2xl font-bold text-slate-900">
-              Websites built around your services
+              Ajdin Husetovic
             </h2>
+            <p className="mt-2 text-sm font-bold uppercase tracking-widest text-blue-700">
+              Developer
+            </p>
             <p className="mt-4 text-slate-600 leading-relaxed">
-              We focus on responsive pages, clear service information, and
-              straightforward ways for customers to contact your business. Your
-              website is shaped around the services you offer and the customers
-              you want to reach.
+              Ajdin handles design implementation, development, responsive
+              behavior, and launch. He turns your service information and
+              project goals into a website that works across devices and makes
+              it easy for customers to contact your business.
             </p>
           </div>
           <div className="rounded-[2rem] bg-slate-900 p-6 md:p-10 text-white">
             <h2 className="text-2xl font-bold">
-              Coordination in North Carolina
+              Mile Cristo
             </h2>
+            <p className="mt-2 text-sm font-bold uppercase tracking-widest text-blue-200">
+              Client Coordination
+            </p>
             <p className="mt-4 text-slate-300 leading-relaxed">
-              North Carolina is our base for local communication, networking,
-              and coordination. Any in-person needs are discussed and agreed
-              upon for your project.
+              Based in North Carolina, Mile supports client communication,
+              project coordination, and local networking. Any in-person needs
+              are discussed and agreed upon for your project.
             </p>
           </div>
         </section>
@@ -56,6 +63,7 @@ export default function AboutPage() {
             two revision rounds included in the Business Website package.
           </p>
           <p className="mt-4 text-slate-600 leading-relaxed">
+            Payment is split into a 50% deposit to begin and 50% before launch.
             Our initial focus is professional small-business websites starting
             at $999 USD. Extra functionality and support are discussed
             separately.

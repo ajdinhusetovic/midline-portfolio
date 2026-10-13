@@ -19,7 +19,7 @@ export default function FeaturedWork({ full = false }: { full?: boolean }) {
               See what we build.
             </h2>
             <p className="mt-4 text-slate-600">
-              Two frontend projects, with different audiences and visual styles.
+              Two website projects, with different audiences and visual styles.
             </p>
           </div>
         )}
@@ -29,7 +29,7 @@ export default function FeaturedWork({ full = false }: { full?: boolean }) {
               key={project.title}
               className="rounded-[2rem] overflow-hidden bg-slate-50 border border-slate-100"
             >
-              <div className="relative aspect-[16/10] bg-slate-200">
+              <div className="relative aspect-[1440/683] bg-slate-200">
                 <Image
                   src={project.image}
                   alt={`${project.title} website preview`}

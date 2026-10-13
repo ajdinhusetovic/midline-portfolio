@@ -15,7 +15,7 @@ export default function AboutUs() {
         </div>
         <div>
           <p className="text-blue-700 text-sm font-bold uppercase tracking-widest mb-4">
-            A small team. A personal approach.
+            Meet the developer behind Midline Code.
           </p>
           <h2 className="text-3xl md:text-5xl font-bold text-slate-900">
             Working together.
@@ -24,12 +24,13 @@ export default function AboutUs() {
           </h2>
           <div className="mt-6 space-y-4 text-lg leading-relaxed text-slate-600">
             <p>
-              Midline Code is a small web-development team serving North
-              Carolina and US businesses.
+              Ajdin Husetovic handles design implementation, development,
+              responsive behavior, and launch for Midline Code websites.
             </p>
             <p>
-              North Carolina is our base for local communication, networking,
-              and coordination. We work directly with you to define the scope,
+              Mile Cristo is based in North Carolina and supports client
+              communication, project coordination, and local networking. We
+              work directly with you to define the scope,
               review the design, and get your website ready to launch.
             </p>
           </div>
@@ -37,7 +38,7 @@ export default function AboutUs() {
             href="/about-us"
             className="mt-7 inline-flex font-bold text-blue-700 py-3 underline underline-offset-4"
           >
-            About our team →
+            Meet Ajdin & Mile →
           </Link>
         </div>
       </div>

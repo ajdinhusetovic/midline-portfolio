@@ -39,6 +39,7 @@ export default function BusinessOffer() {
         content.
       </p>
       <p className="mt-3 text-sm leading-relaxed text-slate-600">
+        Payment is split into a 50% deposit to begin and 50% before launch.
         Final pricing depends on scope. Third-party services, additional pages,
         custom functionality, copywriting, and work outside the agreed scope may
         cost extra. We confirm the scope and quote before work begins.
