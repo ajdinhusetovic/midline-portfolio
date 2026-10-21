@@ -69,7 +69,10 @@ export default function ContactForm() {
       setSending(false);
       requestAnimationFrame(() => {
         statusRef.current?.focus({ preventScroll: true });
-        statusRef.current?.scrollIntoView({ block: "center", behavior: "instant" });
+        statusRef.current?.scrollIntoView({
+          block: "center",
+          behavior: "instant",
+        });
       });
     }
   }
@@ -81,7 +84,7 @@ export default function ContactForm() {
       onSubmit={submit}
       noValidate
       aria-busy={sending}
-      className="rounded-[2rem] border border-slate-200 bg-slate-50 p-6 md:p-10 space-y-6"
+      className="contact-form space-y-6"
     >
       <div>
         <label
@@ -142,10 +145,10 @@ export default function ContactForm() {
           What does your business need?{" "}
           <span className="font-normal text-sm">(required)</span>
         </label>
-        <p id="message-hint" className="mb-3 text-sm text-slate-600">
-          Tell us about your business, the pages you need, and your preferred
-          timing. Up to 5,000 characters. Please don’t include sensitive
-          information.
+        <p id="message-hint" className="mb-3 text-sm muted">
+          Tell us about your business, the services you’re interested in, and
+          your timing or budget if you have one. Up to 5,000 characters. Please
+          don’t include sensitive information.
         </p>
         <textarea
           id="contact-message"
@@ -176,7 +179,7 @@ export default function ContactForm() {
           onChange={onChange}
         />
       </div>
-      <p className="text-sm text-slate-600">
+      <p className="text-sm muted">
         We use these details to respond to your inquiry. Read our{" "}
         <Link
           href="/privacy"
@@ -191,7 +194,7 @@ export default function ContactForm() {
         disabled={sending}
         className="w-full rounded-xl bg-slate-900 text-white px-7 py-4 font-bold hover:bg-blue-700 disabled:opacity-70 disabled:cursor-wait"
       >
-        {sending ? "Sending your inquiry…" : "Request a quote"}
+        {sending ? "Sending your inquiry…" : "Send your inquiry"}
       </button>
       <div
         ref={statusRef}

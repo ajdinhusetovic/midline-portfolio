@@ -22,7 +22,7 @@ export function pageMetadata(
           url: "/opengraph-image.png",
           width: 1200,
           height: 630,
-          alt: "Midline Code — Small-business websites starting at $999",
+          alt: "Midline Code — Web, design & social. A creative marketing studio.",
         },
       ],
     },

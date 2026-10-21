@@ -1,132 +1,121 @@
 import Link from "next/link";
+import { services } from "@/lib/services";
 import BusinessOffer from "@/components/BusinessOffer";
+import StudioCTA from "@/components/StudioCTA";
 import StructuredData from "@/components/StructuredData";
 import { websiteServiceSchema } from "@/lib/structured-data";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
-  "Small Business Web Design in North Carolina",
-  "Small-business web design for Fayetteville, Charlotte, and North Carolina. Websites from $999 USD with responsive pages, a contact form, and launch assistance.",
+  "Web, design & social media services",
+  "Web design and development, graphic design, online marketing, and social media management for businesses across the USA.",
   "/services",
 );
+const faqs = [
+  [
+    "Can we start with just one service?",
+    "Absolutely. Start with a website, a specific design project, or social media support. We can plan connected services as your needs develop.",
+  ],
+  [
+    "How are marketing and social media services priced?",
+    "These are quoted around your channels, content volume, deliverables, and management needs. Any paid advertising budget, printing costs, and third-party fees are identified separately in the quote.",
+  ],
+  [
+    "What files and usage rights will I receive?",
+    "We confirm digital and print deliverables, file formats, and usage rights in your project agreement. Any third-party fonts, stock assets, or licensing requirements are identified before delivery.",
+  ],
+  [
+    "How does social account management work?",
+    "We agree on platforms, posting frequency, approval checkpoints, and reporting. If you need story or private-message responses, we also define coverage times, response guidelines, and which inquiries come back to your team.",
+  ],
+  [
+    "Do you work with businesses outside North Carolina?",
+    "Yes. We work with businesses throughout the USA. North Carolina is our base for coordination, with remote project communication available nationwide.",
+  ],
+  [
+    "What happens after my website launches?",
+    "We can discuss a separate arrangement for hosting, maintenance, backups, and content updates. Coverage and fees are confirmed before ongoing support begins.",
+  ],
+];
 export default function ServicesPage() {
   return (
-    <main id="main-content" tabIndex={-1} className="page-shell">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="max-w-3xl mb-10">
-          <p className="eyebrow">Web design & development</p>
+    <main id="main-content" tabIndex={-1}>
+      <div className="page-shell wrap">
+        <header className="page-intro">
+          <p className="eyebrow">Our services</p>
           <h1 className="page-title">
-            Small-business web design.
+            A stronger presence.
             <br />
-            <span className="text-blue-700">
-              Built for North Carolina & US businesses.
-            </span>
+            <span className="serif accent">From every angle.</span>
           </h1>
-          <p className="mt-6 text-lg md:text-xl text-slate-600">
-            For small and service-based businesses in North Carolina and across
-            the US, including Fayetteville and Charlotte. Present your services,
-            answer customer questions, and make contacting you straightforward.
+          <p className="lead">
+            Bring your website, your brand, and your social channels into the
+            same conversation. We help you choose the work that fits your
+            business and turn it into a clear plan.
           </p>
-        </div>
-        <BusinessOffer />
+          <div className="actions">
+            {services.map((s) => (
+              <Link className="secondary-link" key={s.id} href={`#${s.id}`}>
+                {s.number} /{" "}
+                {s.id === "web"
+                  ? "Websites"
+                  : s.id === "design"
+                    ? "Graphic design"
+                    : "Social & marketing"}{" "}
+                ↓
+              </Link>
+            ))}
+          </div>
+        </header>
+        {services.map((s) => (
+          <section className="detail-section" id={s.id} key={s.id}>
+            <div>
+              <p className="eyebrow">{s.number} / What we do</p>
+              <h2>{s.title}</h2>
+              <Link className="text-link" href="/contact">
+                Let’s talk about your project ↗
+              </Link>
+            </div>
+            <div>
+              <p>{s.intro}</p>
+              <ul className="deliverables">
+                {s.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              {s.id === "web" ? (
+                <BusinessOffer />
+              ) : s.id === "design" ? (
+                <p>
+                  Digital and print deliverables, formats, and usage rights are
+                  agreed in your quote. Printing and production can be scoped
+                  separately.
+                </p>
+              ) : (
+                <p>
+                  Content production, account management, and paid advertising
+                  can be scoped separately or together. Ad spend is separate
+                  from management fees; channels, response coverage, and
+                  approvals are agreed before starting.
+                </p>
+              )}
+            </div>
+          </section>
+        ))}
         <StructuredData data={websiteServiceSchema} />
-        <section
-          id="ongoing-support"
-          className="scroll-mt-28 mt-10 rounded-[2rem] bg-slate-900 p-6 md:p-12 text-white"
-        >
-          <h2 className="text-2xl md:text-3xl font-bold">
-            Support after launch
+        <section className="section faq">
+          <p className="eyebrow">A few useful answers</p>
+          <h2 className="section-title mb-8">
+            Before we <span className="serif">get started.</span>
           </h2>
-          <p className="mt-4 text-slate-300 max-w-3xl leading-relaxed">
-            If you need ongoing hosting, maintenance, backups, or small content
-            updates, we can discuss a separate monthly arrangement.
-            Availability, coverage, and fees are confirmed in your quote.
-          </p>
-          <Link
-            href="/contact"
-            className="mt-6 inline-flex text-blue-300 font-bold underline underline-offset-4"
-          >
-            Ask about ongoing support →
-          </Link>
-        </section>
-        <section className="mt-12 max-w-3xl">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
-            Small-business website questions
-          </h2>
-          <div className="mt-6 space-y-6 text-slate-600">
-            <div>
-              <h3 className="font-bold text-slate-900 mb-2">
-                How much does a small-business website cost?
-              </h3>
-              <p>
-                Our Business Website package starts at $999 USD for up to five
-                pages. Final pricing depends on the agreed scope. Additional
-                pages, custom functionality, copywriting, and third-party
-                services may cost extra.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-bold text-slate-900 mb-2">
-                Do you serve Fayetteville and Charlotte businesses?
-              </h3>
-              <p>
-                Yes. We provide web design and development for small businesses
-                in Fayetteville, Charlotte, and across North Carolina, as well
-                as other US businesses. North Carolina is our base for local
-                communication and coordination. Any in-person needs are agreed
-                upon for your project.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-bold text-slate-900 mb-2">
-                How long does a business website take?
-              </h3>
-              <p>
-                Approximately 7–10 business days after receiving all required
-                client content for the starter scope. We confirm timing before
-                work begins; additional features and delayed content can change
-                the schedule.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-bold text-slate-900 mb-2">
-                What content do you need?
-              </h3>
-              <p>
-                Your service descriptions, business details, logo if available,
-                and approved photos. Copywriting is outside the starter scope
-                unless included in your quote.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-bold text-slate-900 mb-2">
-                What does basic technical SEO include?
-              </h3>
-              <p>
-                Page titles and descriptions, semantic structure, and sitemap
-                and robots configuration. Search rankings and business results
-                are not guaranteed.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-bold text-slate-900 mb-2">
-                What if I need more?
-              </h3>
-              <p>
-                Additional pages and custom functionality are quoted separately.
-                We confirm what is included before starting.
-              </p>
-            </div>
-          </div>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link href="/contact" className="primary-link">
-              Request a quote
-            </Link>
-            <Link href="/our-work" className="secondary-link">
-              View our work
-            </Link>
-          </div>
+          {faqs.map(([q, a]) => (
+            <details key={q}>
+              <summary>{q}</summary>
+              <p>{a}</p>
+            </details>
+          ))}
         </section>
       </div>
+      <StudioCTA />
     </main>
   );
 }

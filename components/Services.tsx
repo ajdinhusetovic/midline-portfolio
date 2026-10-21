@@ -1,29 +1,36 @@
-import BusinessOffer from "./BusinessOffer";
 import Link from "next/link";
+import { services } from "@/lib/services";
 export default function Services() {
   return (
-    <section id="services" className="scroll-mt-28 py-16 md:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="mb-10 max-w-3xl">
-          <p className="text-blue-700 font-bold uppercase tracking-widest text-sm mb-3">
-            Built for your business
-          </p>
-          <h2 className="text-3xl md:text-5xl font-bold text-slate-900">
-            A clear offer. A website that fits.
+    <section className="section wrap" id="services">
+      <div className="section-heading">
+        <div>
+          <p className="eyebrow">What we bring to the table</p>
+          <h2 className="section-title">
+            One studio.
+            <br />
+            <span className="serif">A more connected brand.</span>
           </h2>
-          <p className="mt-5 text-lg text-slate-600">
-            For service businesses that need a professional home online, clear
-            information, and a straightforward way for customers to request a
-            quote.
-          </p>
         </div>
-        <BusinessOffer />
-        <Link
-          href="/services"
-          className="mt-6 inline-flex py-3 text-blue-700 font-bold underline underline-offset-4"
-        >
-          See package details →
-        </Link>
+        <p>
+          Start with what you need now. Build on it as you grow. We connect the
+          dots between your website, your visuals, and your voice.
+        </p>
+      </div>
+      <div className="service-list">
+        {services.map((s) => (
+          <Link className="service-row" href={`/services#${s.id}`} key={s.id}>
+            <span className="service-number">{s.number} /</span>
+            <h3>{s.title}</h3>
+            <div>
+              <p>{s.short}</p>
+              <p className="tags">{s.tags}</p>
+            </div>
+            <span className="service-arrow" aria-hidden="true">
+              ↗
+            </span>
+          </Link>
+        ))}
       </div>
     </section>
   );

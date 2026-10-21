@@ -1,23 +1,5 @@
 import { siteUrl } from "./metadata";
-const serviceAreas = [
-  { "@type": "State", name: "North Carolina" },
-  {
-    "@type": "City",
-    name: "Fayetteville",
-    containedInPlace: { "@type": "State", name: "North Carolina" },
-  },
-  {
-    "@type": "City",
-    name: "Charlotte",
-    containedInPlace: { "@type": "State", name: "North Carolina" },
-  },
-  {
-    "@type": "City",
-    name: "Raleigh",
-    containedInPlace: { "@type": "State", name: "North Carolina" },
-  },
-  { "@type": "Country", name: "United States" },
-];
+const serviceAreas = [{ "@type": "Country", name: "United States" }];
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -26,10 +8,10 @@ export const organizationSchema = {
       "@id": `${siteUrl}/#organization`,
       name: "Midline Code",
       url: siteUrl,
-      logo: `${siteUrl}/2.svg`,
+      logo: `${siteUrl}/1.svg`,
       email: "contact@midlinecode.com",
       description:
-        "A small web-development team providing web design for North Carolina and US small businesses.",
+        "An independent creative marketing studio providing web design and development, graphic design, online marketing, and social media services for businesses across the USA.",
       areaServed: serviceAreas,
     },
     {

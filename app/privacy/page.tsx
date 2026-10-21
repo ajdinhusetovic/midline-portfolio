@@ -10,15 +10,13 @@ export default function PrivacyPage() {
       <div className="max-w-3xl mx-auto px-6">
         <p className="eyebrow">Your contact information</p>
         <h1 className="page-title">Privacy Policy</h1>
-        <p className="mt-6 text-slate-600 leading-relaxed">
+        <p className="mt-6 muted leading-relaxed">
           This page explains how the Midline Code website handles inquiries
           submitted through its contact form.
         </p>
-        <div className="mt-8 space-y-8 text-slate-600 leading-relaxed">
+        <div className="mt-8 space-y-8 muted leading-relaxed">
           <section>
-            <h2 className="text-xl font-bold text-slate-900 mb-3">
-              Information you provide
-            </h2>
+            <h2 className="text-xl font-bold  mb-3">Information you provide</h2>
             <p>
               The form asks for your name, email address, and project message.
               Please do not include passwords, payment details, or other
@@ -27,9 +25,7 @@ export default function PrivacyPage() {
             </p>
           </section>
           <section>
-            <h2 className="text-xl font-bold text-slate-900 mb-3">
-              How the form uses it
-            </h2>
+            <h2 className="text-xl font-bold  mb-3">How the form uses it</h2>
             <p>
               Your inquiry is sent to our business email address through Resend,
               our email-delivery provider. We use the information to respond,
@@ -38,7 +34,7 @@ export default function PrivacyPage() {
             </p>
           </section>
           <section>
-            <h2 className="text-xl font-bold text-slate-900 mb-3">
+            <h2 className="text-xl font-bold  mb-3">
               Providers and team access
             </h2>
             <p>
@@ -51,9 +47,7 @@ export default function PrivacyPage() {
             </p>
           </section>
           <section>
-            <h2 className="text-xl font-bold text-slate-900 mb-3">
-              Cookies and analytics
-            </h2>
+            <h2 className="text-xl font-bold  mb-3">Cookies and analytics</h2>
             <p>
               This version of the website does not include advertising trackers
               or an analytics integration. If we add analytics that changes how
@@ -61,15 +55,13 @@ export default function PrivacyPage() {
             </p>
           </section>
           <section>
-            <h2 className="text-xl font-bold text-slate-900 mb-3">
-              Questions and requests
-            </h2>
+            <h2 className="text-xl font-bold  mb-3">Questions and requests</h2>
             <p>
               To ask about your inquiry information, request a correction, or
               request deletion, email{" "}
               <a
                 href="mailto:contact@midlinecode.com"
-                className="text-blue-700 underline underline-offset-4 break-all"
+                className="accent underline underline-offset-4 break-all"
               >
                 contact@midlinecode.com
               </a>

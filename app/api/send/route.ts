@@ -84,7 +84,7 @@ export async function POST(request: Request) {
       from: "Midline Code Notifications <no-reply@notifications.midlinecode.com>",
       to: ["contact@midlinecode.com"],
       replyTo: data.email,
-      subject: `Midline Code: Website inquiry from ${data.name}`,
+      subject: `Midline Code: Studio inquiry from ${data.name}`,
       react: EmailTemplate({
         firstName: data.name,
         email: data.email,
