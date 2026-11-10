@@ -22,12 +22,9 @@ export default function FeaturedWork({ full = false }: { full?: boolean }) {
           </div>
         )}
         <div className="work-grid">
-          {projects.map((p, i) => (
+          {projects.map((p) => (
             <article className="work-card" key={p.title}>
-              <div
-                className="work-image"
-                style={i === 1 ? { background: "#ccf3ff" } : undefined}
-              >
+              <div className="work-image">
                 <Image
                   src={p.image}
                   alt={`${p.title} website preview`}

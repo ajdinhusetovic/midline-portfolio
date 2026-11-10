@@ -1,13 +1,14 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @theme inline {
-  --color-background: #ccf3ff;
+  --color-background: var(--page-background);
   --color-foreground: #18447d;
   --color-border: #99d9ec;
   --color-ring: #18447d;
 }
 :root {
-  --paper: #ccf3ff;
+  --page-background: #ccf3ff;
+  --paper: var(--page-background);
   --ink: #18447d;
   --muted: #345574;
   --line: #99d9ec;
@@ -29,6 +30,9 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   -webkit-font-smoothing: antialiased;
+}
+main {
+  background: var(--page-background);
 }
 a,
 button {
@@ -163,7 +167,8 @@ a {
   position: fixed;
   inset: 0 0 auto;
   z-index: 50;
-  background: #ccf3fff2;
+  background: var(--ink);
+  color: var(--paper);
   backdrop-filter: blur(15px);
   border-bottom: 1px solid var(--line);
 }
@@ -211,10 +216,20 @@ a {
   text-decoration: none;
 }
 .desktop-nav > a:not(.primary-link):hover {
-  color: var(--accent);
+  color: var(--light-blue);
 }
 .desktop-nav .primary-link {
   padding: 12px 19px;
+  background: var(--light-blue);
+  color: var(--ink);
+  border-color: var(--light-blue);
+}
+.desktop-nav .primary-link:hover {
+  background: var(--paper);
+  border-color: var(--paper);
+}
+.studio-nav :focus-visible {
+  outline-color: var(--light-blue);
 }
 .menu-button {
   display: none;
@@ -440,7 +455,7 @@ a {
   color: var(--accent);
 }
 .work-section {
-  background: #99d9ec;
+  background: var(--page-background);
 }
 .work-grid {
   display: grid;
@@ -450,7 +465,7 @@ a {
 .work-image {
   position: relative;
   aspect-ratio: 1.65;
-  background: #ccf3ff;
+  background: var(--light-blue);
   overflow: hidden;
   padding: 35px;
 }
