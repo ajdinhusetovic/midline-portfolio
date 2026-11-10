@@ -9,9 +9,10 @@ export default function TeamProfiles() {
           <h3>Ajdin Husetovic</h3>
           <p className="role">Web design & development</p>
           <p>
-            Ajdin brings your website to life, from design implementation and
-            development to responsive behavior and launch. He focuses on clear
-            experiences that work for your customers.
+            Ajdin leads the technical side of MidlineCode, bringing websites to
+            life through design, development, and implementation. He focuses on
+            building functional, responsive websites that make it easy for
+            customers to interact with your business.
           </p>
         </div>
       </article>
@@ -20,12 +21,13 @@ export default function TeamProfiles() {
           MC
         </span>
         <div>
-          <h3>Mile Cristo</h3>
+          <h3>Mile Cristobal</h3>
           <p className="role">Marketing, social media & client coordination</p>
           <p>
-            Based in North Carolina, Mile shapes marketing and social content,
-            supports client communication, and keeps projects connected to your
-            business goals.
+            Mile leads marketing, social media, and creative content, while
+            managing client communication and project coordination. She works
+            closely with businesses to bring their ideas to life through
+            content, visuals, and thoughtful marketing.
           </p>
         </div>
       </article>

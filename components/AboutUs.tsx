@@ -4,7 +4,7 @@ export default function AboutUs() {
   return (
     <section className="section wrap team-section">
       <div>
-        <p className="eyebrow">Small studio. Personal investment.</p>
+        <p className="eyebrow">Personal service. Thoughtful work.</p>
         <h2 className="section-title">
           Real people.
           <br />

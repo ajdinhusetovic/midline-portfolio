@@ -4,7 +4,9 @@ export default function Hero() {
   return (
     <section className="hero wrap">
       <div className="hero-meta">
-        <p className="eyebrow">Independent studio. Connected thinking.</p>
+        <p className="eyebrow">
+          Websites, social media, and creative marketing.
+        </p>
         <span className="status">
           Based in North Carolina. Working across the USA.
         </span>
@@ -12,14 +14,13 @@ export default function Hero() {
       <div className="hero-layout">
         <div>
           <h1 className="display">
-            Good business.
-            <br />
-            Great <span className="serif accent">presence.</span>
+            Your business deserves a better{" "}
+            <span className="serif accent">online presence.</span>
           </h1>
           <p className="lead">
-            Websites, design, and social media that make your business feel like
-            your business. All brought together by one creative marketing
-            studio.
+            Websites, social media, and creative marketing solutions designed to
+            help your business connect with the right people. All brought
+            together by one creative marketing studio.
           </p>
           <div className="actions">
             <Link href="/contact" className="primary-link">
@@ -30,7 +31,7 @@ export default function Hero() {
             </Link>
           </div>
           <p className="hero-note">
-            Built for small businesses with something good to share.
+            Built for all business with something good to share.
           </p>
         </div>
         <div

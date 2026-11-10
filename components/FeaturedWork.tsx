@@ -26,7 +26,7 @@ export default function FeaturedWork({ full = false }: { full?: boolean }) {
             <article className="work-card" key={p.title}>
               <div
                 className="work-image"
-                style={i === 1 ? { background: "#e3cfb8" } : undefined}
+                style={i === 1 ? { background: "#ccf3ff" } : undefined}
               >
                 <Image
                   src={p.image}

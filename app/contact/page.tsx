@@ -24,7 +24,7 @@ export default function ContactPage() {
             We’ll review your ideas, talk through the right services, and
             confirm the scope and pricing before work begins.
           </p>
-          <div className="mt-10 pt-7 border-t border-[#ddded3]">
+          <div className="mt-10 pt-7 border-t border-[var(--line)]">
             <p className="eyebrow">Prefer email?</p>
             <a
               href="mailto:contact@midlinecode.com"
