@@ -167,8 +167,8 @@ a {
   position: fixed;
   inset: 0 0 auto;
   z-index: 50;
-  background: var(--light-blue);
-  color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
   backdrop-filter: blur(15px);
   border-bottom: 1px solid #18447d26;
   box-shadow: 0 3px 15px #18447d08;
@@ -208,7 +208,7 @@ a {
   margin-left: 6px;
 }
 .studio-nav .wordmark small {
-  border-color: #18447d40;
+  border-color: #ffffff40;
 }
 .desktop-nav {
   display: flex;
@@ -220,14 +220,14 @@ a {
   text-decoration: none;
 }
 .desktop-nav > a:not(.primary-link):hover {
-  color: var(--ink);
+  color: var(--light-blue);
   text-decoration: underline;
 }
 .desktop-nav .primary-link {
   padding: 12px 19px;
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ink);
+  background: var(--light-blue);
+  color: var(--ink);
+  border-color: var(--light-blue);
 }
 .desktop-nav .primary-link:hover {
   background: var(--paper);
@@ -235,13 +235,13 @@ a {
   border-color: var(--paper);
 }
 .studio-nav :focus-visible {
-  outline-color: var(--ink);
+  outline-color: var(--paper);
 }
 .menu-button {
   display: none;
   background: none;
-  border: 1px solid #18447d40;
-  color: var(--ink);
+  border: 1px solid #ffffff40;
+  color: var(--paper);
   padding: 10px;
 }
 .mobile-overlay {

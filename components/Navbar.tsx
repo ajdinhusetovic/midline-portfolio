@@ -25,7 +25,7 @@ export default function Navbar() {
       <div className="wrap nav-inner">
         <Link href="/" className="wordmark" aria-label="Midline Code home">
           <Image
-            src="/logo.svg"
+            src="/logo-light.svg"
             alt="Midline Code"
             width={146}
             height={66}
